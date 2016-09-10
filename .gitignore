@@ -7,3 +7,5 @@
 /WarriorProject/build/
 /WarriorProject/WarriorProject-war/dist/
 /WarriorProject/dist/
+WarriorProject/WarriorProject-ejb/src/conf/META-INF/glassfish-resources.xml
+*.xml
