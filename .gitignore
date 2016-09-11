@@ -14,3 +14,5 @@ WarriorProject/src/conf/META-INF/glassfish-resources.xml
 WarriorProject/WarriorProject-ejb/nbproject/project.properties
 WarriorProject/WarriorProject-ejb/src/conf/persistence.xml
 WarriorProject/WarriorProject-war/nbproject/project.properties
+*.properties
+WarriorProject/WarriorProject-ejb/nbproject/project.properties
