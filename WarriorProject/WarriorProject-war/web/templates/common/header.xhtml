@@ -26,7 +26,9 @@
                         </c:if>
 
                         <li style="float:right">
-                            <h:link value ="Wyloguj" outcome="/session/wyloguj.xhtml"/>
+                            <h:form>
+                                <h:commandButton class="btn pull-right button button-small" value="Wyloguj się" action="#{sessionController.logout()}"></h:commandButton>
+                            </h:form>
                         </li>
                     </c:if>
 
