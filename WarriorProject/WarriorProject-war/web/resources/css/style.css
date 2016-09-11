@@ -1,0 +1,802 @@
+@font-face {
+    font-family: sansation-light;
+    src: url("fonts/SansationLight.woff");
+}
+@font-face {
+    font-family: railway;
+    src: url("fonts/railway.woff");
+}
+
+/* HEADER SECTION */
+
+#content {
+    min-height: 450px;
+}
+
+
+#header{
+    margin: 0 3% 0 3%;
+    border-bottom: 1px groove ghostwhite;
+    border-color: rgb(214, 217, 211);
+}
+#header .menu{
+    font-size: 20px;
+    text-align: center;
+
+}
+#header .menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #3b5998;
+}
+#header .menu li {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+#header .menu li:last-child {
+    border-right: none;
+}
+#header .menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+#header .menu li:hover:not(.active) {
+    background-color: #8b9dc3;
+}
+#header .menu .active {
+    background-color: #052059;
+}
+
+
+
+.client-name-header {
+    display: inline;
+    padding: 5px;
+    margin-left: 45%;
+}
+
+.client-name-header label {
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    padding-right: 5px;
+    margin-top: 17px;
+}
+
+.client-name-header i {
+    padding-right: 10px;
+    color: whitesmoke;
+}
+
+/* login */
+#loginForm {
+    margin-top: 20px;
+}
+
+.login {
+    max-width: 25%;
+    margin: 0 auto;
+}
+
+.login h1 {
+    text-align: center;
+    border-bottom: 1px groove gray;
+    padding-bottom: 20px;   
+}
+
+.login input {
+    width: 100%;
+}
+/* end of login */
+
+
+/* register */
+
+.register {
+    max-width: 25%;
+    margin: 0 auto;
+}
+
+.register h2 {
+    text-align: center;
+    border-bottom: 1px groove gray;
+    padding-bottom: 20px;
+}
+
+#registerForm {
+    margin-top: 30px;
+}
+
+#registerForm label {
+    margin-right: 20px;
+    margin-top: px;
+}
+
+.registeBox .btn {
+    width: 100%;
+    margin-top: 20px;
+}
+.register td input  {
+    margin-top: 5px;
+}
+
+/* end of register */
+
+
+
+/* END OF HEADER SECTION */
+
+
+#content, #footer  {
+    margin: 0 3% 0 3%;
+}
+/* BODY AS A INDEX SECTION */
+
+
+.index h2 {
+    text-align: center;
+    font-family: sansation-light;
+    font-size: 40px;
+    border-bottom: 1px groove;
+    padding-bottom: 10px;
+}
+
+.index p {
+    text-align: center;
+    font-size: 18px;
+}
+.main-title {
+    padding: 15px 0px 15px 0px;
+    font-family:  sansation-light;
+
+}
+
+.index .row {
+    display: inline-block;
+    margin-left: 8%;
+    border: 1px groove;
+    background-color: #F9F9F9;
+}
+
+.index .row .col-sm-3  {
+    text-align: center;
+    padding: 5px;
+}
+
+.social {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+/* END OF INDEX SECTION */
+
+#footer {
+
+    text-align: center;
+    margin-top: 23px;
+    padding-top: 10px;
+    border-top: 1px groove ghostwhite;
+}
+
+/* CONTACT */
+.contacBox {
+    margin-left: 33%
+}
+
+.contacBox td {
+    padding: 5px 40px 5px 0px;
+}
+
+.inputs {
+    min-width: 300px;
+}
+
+/* END OF CONTACT */
+
+/*************offer***************/
+.offer {
+    font-size: 16px;
+}
+.offer .listed_products .img-thumbnail {
+    align-content: center;
+}
+.offer .listed_products .row .col-md-6:hover {
+    border: 1px solid #393939; 
+    background-color: #e0dedf;
+}
+.offer .listed_products .row a {
+    text-decoration: none; 
+    color: black; 
+}
+.offer .listed_products .row h2 {
+    text-align: center;
+}
+.offer .listed_products .row .col-md-3:hover {
+    border: 1px solid #393939; 
+    background-color: #e0dedf;
+}
+.offer .listed_products .row .col-md-3 h2 {
+    font-size: 16px; 
+    font-weight: bold;
+}
+.offer .listed_products h1 { 
+    text-align: center;  
+    color: white; 
+    background-color: #0E2447; 
+    padding: 5px;
+}
+.offer h2 { 
+    font-family: sansation-light; 
+    border-bottom: groove;
+    border-width: 1px;
+    border-color: rgb(214, 217, 211);
+}
+/* END OF OFFER */
+
+/*************admin***************/
+
+.menuAdmin{
+    position: relative;
+    margin-right: 20px;
+}
+
+.menuAdmin {
+    float: left;
+    margin-top: 4%;
+}
+.contentAdmin {
+    position: relative;
+    margin-left: 1%;
+    overflow: hidden;
+}
+#content .menuAdmin {
+    width: 13%;
+    margin-right: 10px;
+    font-size: 1.3em;
+}
+#content .menuAdmin ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: #3b5998;
+    position: relative;
+}
+
+#content .menuAdmin li a {
+    display: block;
+    color: white;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+#content .menuAdmin li:hover:not(.active) {
+    background-color: #8b9dc3;
+}
+#content .menuAdmin .active {
+    background-color: #052059;
+}
+#content .menuAdmin ul h2{
+    background-color: #001E5C;
+    color: white;
+    text-align: center;
+    font-family: sansation-light;
+    border-bottom: rgb(235, 235, 235)solid;
+    border-width: 8px;
+    margin-bottom: 0;
+}
+
+
+/*************customer***************/
+
+.menuCustomer, .contentCustomer{
+    display: inline-table;
+    position: relative;
+}
+.menuCustomer {
+    margin-right: 10px;
+    margin-top: 6.5%;
+    float : left;
+    font-size: 1.3em;
+
+}
+.menuCustomer ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: #f1f1f1;
+    position: static;
+    height: 100%;
+
+}
+.menuCustomer li a {
+    display: block;
+    color: #000;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+.menuCustomer li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+.menuCustomer li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+/*************contentAdmin***************/
+.contentAdmin h1{
+    text-align: center;
+    font-family: sansation-light;
+    padding-bottom: 2%;
+    border-bottom: groove;
+    border-width: 1px;
+    border-color: rgb(214, 217, 211);
+}
+.contentAdmin .table-data {
+    padding-top: 10px;
+    border: 0;
+    border-collapse: collapse;
+    border-width: 0px;
+    border-color: rgb(214, 217, 211);
+
+}
+
+
+.contentAdmin .table-data td{
+    font-size: 14px;
+    padding: 3px;
+}
+
+.contentAdmin .table-data tr:nth-child(even){background-color: #f2f2f2}
+.table-data th {
+    background-color: #3b5998;
+    color: white;
+    padding: 3px;
+
+}
+/***********/
+/*.contentAdmin*/ #panelAdd table, #panelAdd{
+    padding-top: 2%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*.contentAdmin*/ #panelAdd table tr.spaceUnder > td
+{
+    padding-bottom: 5em;
+}
+/*.contentAdmin*/ #panelAdd table td{
+    text-align: left;
+}
+
+
+
+.table-header {
+    /*    border: solid 1px;*/
+    position: relative;
+    border-color: rgb(76, 175, 80);
+    background-color: #3b5998;
+    color : white;
+    font-size: 20px;
+    padding: 4px;
+    padding-left: 10px;
+    margin: 0;
+}
+
+
+
+.table-content {
+    border: solid 1px;
+    position: relative;
+    border-color: rgb(59, 89, 152);
+    padding: 0px 0px 10px 0px;
+    margin-top: 20px;
+    width: 100%;
+    background-color: white;
+}
+
+table.dataTable {
+    border-collapse: collapse;
+}
+
+.table-data th {
+    font-size: 14px;
+    text-align: center;
+}
+
+.table-data td {
+    text-align: center;
+    font-size: 13px;
+}
+
+.table-data td a {
+    color: black;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.table-data td a:hover {
+    text-decoration: none;
+}
+.table-data {
+    overflow: hidden;
+    width: 100%;
+}
+.table-data tr:hover {
+    background-color: #FCF59A;
+}
+
+.contentAdmin .table-data tr:nth-child(even):hover {
+    background-color: #FCF59A
+}
+
+/*.contentAdmin */.actions{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+/*.contentAdmin */.actions ul{
+    list-style-type: none;
+    display: inline-flex;
+    padding-left: 0;
+}
+/*.contentAdmin*/ .actions li{
+    padding-right: 10px;
+}
+
+/*******************/
+.row .col-md-3 ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.actions a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+
+.add-worker  {
+    color: white;
+    text-decoration: none;
+    background-color: #3b5998;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.add-worker:hover {
+    background-color: rgb(139, 157, 195);
+}
+
+/* client name in header */
+
+.contentCustomer {
+    width: 85%;
+}
+
+.contentCustomer h1 {
+    text-align: center;
+    font-family: sansation-light;
+    padding-bottom: 2%;
+}
+
+.box-client-wrapper {
+    padding: 25px;
+    float : left;
+}
+
+.profile-image {
+    text-align: center;
+}
+
+.profile-image label {
+    padding: 2px 15px 2px 15px;
+    background-color: #3b5998;
+    color: white;
+}
+
+.box-adres-wrapper {
+    float: left;
+}
+
+.box-stats-wrapper {
+    float:left;
+}
+
+.adres-details, .stats-details {
+    padding: 15px;
+    margin-top: 5px;
+}
+
+.adres-details label, .profile-details label, .stats-details label {
+    margin-right: 20px;
+}
+
+.stats-details h2, .adres-details h2 {
+    padding-bottom: 35px;
+    margin:0;
+}
+
+.customerView {
+    min-height: 200px;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 1px solid rgb(200, 219, 244);
+    background-color: whitesmoke;
+}
+
+.customerView div {
+    max-width: 400px;
+}
+
+.customerView div:not(:first-of-type) {
+    margin-left: 25px;
+}
+
+
+.stats-details a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.stats-details a {
+    color: white;
+    text-decoration: none;
+    float:right;
+    background-color: #3b5998;
+    padding: 5px;
+    border-radius: 25px;
+    margin-top: 25px;
+}
+
+
+.customerEdit {
+    margin-left: 38%;
+}
+
+.customerEdit label {
+    margin-right: 20px;
+    padding-top: 10px;
+}
+
+.customerEdit input[type="submit"] {
+    text-align: center;
+    margin: 10px 0px 0px 120px;
+}
+
+
+
+.insurance-title {
+    font-size: 30px;
+    border-bottom: 1px solid;
+}
+
+
+
+
+
+/* DATATABLES */
+
+.dataTables_length, .dataTables_filter {
+    padding: 10px 5px 0px 5px;
+}
+
+.dataTables_info {
+    margin: 0;
+    padding: 5px 0px 5px 5px;
+}
+
+.dataTables_filter {
+    padding-bottom: 5px;
+}
+
+
+/* END OF DATATABLES */
+
+/*************menuWorker***************/
+
+.menuWorker{
+    position: relative;
+}
+
+.menuWorker {
+    float: left;
+    margin-top: 4%;
+}
+.contentWorker {
+    position: relative;
+    margin-left: 1%;
+    overflow: hidden;
+}
+#content .menuWorker {
+    width: 13%;
+    margin-right: 10px;
+    font-size: 1.3em;
+}
+#content .menuWorker ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: #3b5998;
+    position: relative;
+}
+#content .menuWorker li a {
+    display: block;
+    color: white;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+#content .menuWorker li:hover:not(.active) {
+    background-color: #8b9dc3;
+}
+#content .menuWorker .active {
+    background-color: #052059;
+}
+#content .menuWorker ul h2{
+    background-color: #001E5C;
+    color: white;
+    text-align: center;
+    font-family: sansation-light;
+    border-bottom: rgb(235, 235, 235)solid;
+    border-width: 8px;
+    margin-bottom: 0;
+}
+
+/*************contentWorker***************/
+.contentWorker h1{
+    text-align: center;
+    font-family: sansation-light;
+    padding-bottom: 2%;
+    border-bottom: groove;
+    border-width: 1px;
+    border-color: rgb(214, 217, 211);
+}
+.contentWorker .table-data {
+    padding-top: 10px;
+    border: 0;
+    border-collapse: collapse;
+    border-width: 0px;
+    border-color: rgb(214, 217, 211);
+
+}
+.contentWorker .table-data td{
+    font-size: 14px;
+    padding: 3px;
+}
+.contentWorker .table-data tr:nth-child(even){background-color: #f2f2f2}
+.table-data th {
+    background-color: #3b5998;
+    color: white;
+    padding: 3px;
+
+}
+/***********/
+/*Worker & Admin profile*/
+
+.box-zaklad-wrapper {
+    float:left;
+}
+
+.box-oddzial-wrapper {
+    float:left;
+}
+.zaklad-details, .oddzial-details {
+    padding: 15px;
+    margin-top: 5px;
+}
+.zaklad-details label, .oddzial-details label{
+    margin-right: 20px;
+}
+.zaklad-details h2, .oddzial-details h2 {
+    /*text-align: center;*/
+    padding-bottom: 35px;
+    margin:0;
+}
+.zaklad-details a:hover {
+    text-decoration: none;
+    color: white;
+}
+.zaklad-details a {
+    color: white;
+    text-decoration: none;
+    float:right;
+    background-color: #3b5998;
+    padding: 5px;
+    border-radius: 25px;
+}
+.oddzial-details a:hover {
+    text-decoration: none;
+    color: white;
+}
+.oddzial-details a {
+    color: white;
+    text-decoration: none;
+    float:right;
+    background-color: #3b5998;
+    padding: 5px;
+    border-radius: 25px;
+}
+
+/****************************************/
+.data-view .row .col-md-3{
+    background-color: whitesmoke;
+}
+
+.data-view .row .col-md-3 h4{
+    text-align:center;
+    font-size: 20px;
+    font-family: sansation-light;
+    border-bottom: 1px solid;
+}
+
+
+.col-md-3 {
+    margin: 5px 5px 10px 5px;
+    border: 2px groove;
+    height: 250px;   
+}
+
+.col-md-3 label {
+    margin-right: 10px;
+}
+
+.data-view {
+    margin-left: 20px;
+}
+
+.listed_products .col-md-3 {
+    height:auto;
+}
+
+.menuCustomer{
+    position: relative;
+    margin-right: 20px;
+}
+
+.menuAdmin {
+    float: left;
+    margin-top: 4%;
+}
+/*.contentAdmin {
+    position: relative;
+    margin-left: 1%;
+    overflow: hidden;
+}*/
+#content .menuCustomer {
+    width: 13%;
+    margin-right: 10px;
+    font-size: 1.3em;
+}
+#content .menuCustomer ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: #3b5998;
+    position: relative;
+}
+
+#content .menuCustomer li a {
+    display: block;
+    color: white;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+#content .menuCustomer li:hover:not(.active) {
+    background-color: #8b9dc3;
+}
+#content .menuCustomer .active {
+    background-color: #052059;
+}
+#content .menuCustomer ul h2{
+    background-color: #001E5C;
+    color: white;
+    text-align: center;
+    font-family: sansation-light;
+    border-bottom: rgb(235, 235, 235)solid;
+    border-width: 8px;
+    margin-bottom: 0;
+}
+
+.buy-insurance-box {
+    width: 50%;
+    margin: 0 auto;
+}
