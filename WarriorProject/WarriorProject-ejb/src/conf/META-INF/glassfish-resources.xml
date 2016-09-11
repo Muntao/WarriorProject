@@ -9,4 +9,6 @@
     <property name="User" value="admin_warrior"/>
     <property name="Password" value="GTlisQvZUc"/>
   </jdbc-connection-pool>
+    <description/>
+  </jdbc-resource>
 </resources>

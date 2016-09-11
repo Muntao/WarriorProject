@@ -6,4 +6,7 @@
     <property name="User" value="admin_warrior"/>
     <property name="Password" value="GTlisQvZUc"/>
   </jdbc-connection-pool>
+  <jdbc-resource enabled="true" jndi-name="MySqlFinalResource" object-type="user" pool-name="MySqlFinalPool">
+    <description/>
+  </jdbc-resource>
 </resources>
