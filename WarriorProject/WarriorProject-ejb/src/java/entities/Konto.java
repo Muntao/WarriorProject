@@ -30,13 +30,20 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "konto")
 @XmlRootElement
-@NamedQueries({
+@NamedQueries({    
+    @NamedQuery(name = "Konto.findByKontoLoginAndHaslo", query = "SELECT k FROM Konto k WHERE k.kontoLogin = :kontoLogin AND k.kontoHaslo = :kontoHaslo"),
+    
     @NamedQuery(name = "Konto.findAll", query = "SELECT k FROM Konto k"),
     @NamedQuery(name = "Konto.findByKontoId", query = "SELECT k FROM Konto k WHERE k.kontoId = :kontoId"),
     @NamedQuery(name = "Konto.findByKontoLogin", query = "SELECT k FROM Konto k WHERE k.kontoLogin = :kontoLogin"),
     @NamedQuery(name = "Konto.findByKontoHaslo", query = "SELECT k FROM Konto k WHERE k.kontoHaslo = :kontoHaslo"),
     @NamedQuery(name = "Konto.findByKontoUprawnienia", query = "SELECT k FROM Konto k WHERE k.kontoUprawnienia = :kontoUprawnienia")})
 public class Konto implements Serializable {
+    
+    
+    public static String ADMIN = "ADMIN";
+    public static String USER = "USER";
+    public static String BANNED = "BANNED";
 
     private static final long serialVersionUID = 1L;
     @Id
