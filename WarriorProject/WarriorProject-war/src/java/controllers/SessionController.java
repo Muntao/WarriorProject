@@ -62,6 +62,10 @@ public class SessionController implements Serializable {
         if (konto != null) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Zostałeś poprawnie zalogowany!"));
             logged = true;
+            if(konto.getKontoUprawnienia().equals(Konto.ADMIN)){
+                this.isAdmin = true;
+            }
+            
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Login lub hasło jest błędne!"));
             konto = new Konto();
