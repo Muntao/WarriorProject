@@ -18,12 +18,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Konrad
- */
+
 public class sessionFilter implements Filter {
 
     @Inject
@@ -65,7 +61,7 @@ public class sessionFilter implements Filter {
         } else if (uri.contains("/session/wyloguj")) {
             // Jeżeli zalogowany i chce się wylogować to wyloguj i na index
             sessionController.logout();
-        } else if (uri.contains("/admin/") && sessionController.getKonto().getKontoUprawnienia() != Konto.ADMIN) {
+        } else if (uri.contains("/admin/") && !sessionController.getKonto().getKontoUprawnienia().equals(Konto.ADMIN)) {
             // Jeżeli zalogowany i niema administratorskich uprawnien to 403
             httpResponse.sendError(403);
         }

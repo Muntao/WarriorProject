@@ -8,11 +8,7 @@
         
     </h:head>
     <h:body>
-        <ui:composition template="./../template/default.xhtml">
-            <ui:define name="title">Wyloguj</ui:define>
-            <ui:define name="sidebar">
-                <ui:include src="../template/sidebar.xhtml" />
-            </ui:define>
+        <ui:composition template="/templates/pageTemplate.xhtml">
             <ui:define name="content">
                 <h2 class="table-title">Zostałeś wylogowany<i></i></h2>
             </ui:define>

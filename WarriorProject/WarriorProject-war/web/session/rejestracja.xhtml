@@ -9,14 +9,10 @@
     </h:head>
 
     <h:body>
-        <ui:composition template="./../template/default.xhtml">
-            <ui:define name="title">Rejestracja</ui:define>
-            <ui:define name="sidebar">
-                <ui:include src="/template/sidebar.xhtml" />
-            </ui:define>
+<ui:composition template="/templates/pageTemplate.xhtml">
             <ui:define name="content">
                 <h2 class="table-title"><h:outputText value="Panel Rejestracji"/><i></i></h2> 
-                <f:view>
+<!--                <f:view>
                     <h:form>                        
                         <h:panelGrid columns="2">
                             <h:outputLabel value="Imie:" for="uzytkownikImie" />
@@ -52,7 +48,7 @@
                         </h:panelGrid> 
                         <h:commandButton class="button pull-right" action="#{rejestracjaBean.register()}" value="Zarejestruj się!"/>
                     </h:form>
-                </f:view>
+                </f:view>-->
 
             </ui:define> 
         </ui:composition>
