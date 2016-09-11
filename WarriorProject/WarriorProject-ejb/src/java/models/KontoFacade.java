@@ -6,14 +6,12 @@
 package models;
 
 import entities.Konto;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-/**
- *
- * @author JacekM
- */
 @Stateless
 public class KontoFacade extends AbstractFacade<Konto> {
 
@@ -28,5 +26,15 @@ public class KontoFacade extends AbstractFacade<Konto> {
     public KontoFacade() {
         super(Konto.class);
     }
-    
+
+    public Konto findByKontoLoginAndHaslo(Konto konto) {
+        Query q = em.createNamedQuery("Konto.findByKontoLoginAndHaslo")
+                .setParameter("kontoLogin", konto.getKontoLogin())
+                .setParameter("kontoHaslo", konto.getKontoHaslo());
+        List<Konto> result = q.getResultList();
+        if (result.size() > 0) {
+            return result.get(0);
+        } 
+        return null;        
+    }
 }
