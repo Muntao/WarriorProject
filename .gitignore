@@ -7,3 +7,15 @@
 /WarriorProject/build/
 /WarriorProject/WarriorProject-war/dist/
 /WarriorProject/dist/
+WarriorProject/nbproject/project.properties
+WarriorProject/src/conf/META-INF/glassfish-resources.xml
+WarriorProject/WarriorProject-ejb/nbproject/project.properties
+WarriorProject/WarriorProject-ejb/src/conf/META-INF/glassfish-resources.xml
+WarriorProject/WarriorProject-ejb/src/conf/persistence.xml
+WarriorProject/WarriorProject-war/nbproject/project.properties
+WarriorProject/nbproject/project.properties
+WarriorProject/src/conf/META-INF/glassfish-resources.xml
+WarriorProject/WarriorProject-ejb/nbproject/project.properties
+WarriorProject/WarriorProject-ejb/src/conf/META-INF/glassfish-resources.xml
+WarriorProject/WarriorProject-ejb/src/conf/persistence.xml
+WarriorProject/WarriorProject-war/nbproject/project.properties
