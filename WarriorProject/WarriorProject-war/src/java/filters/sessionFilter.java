@@ -61,7 +61,7 @@ public class sessionFilter implements Filter {
         } else if (uri.contains("/session/wyloguj")) {
             // Jeżeli zalogowany i chce się wylogować to wyloguj i na index
             sessionController.logout();
-        } else if (uri.contains("/admin/") && !sessionController.getKonto().getKontoUprawnienia().equals(Konto.ADMIN)) {
+        } else if (uri.contains("/admin/") && !sessionController.isIsAdmin()) {
             // Jeżeli zalogowany i niema administratorskich uprawnien to 403
             httpResponse.sendError(403);
         }

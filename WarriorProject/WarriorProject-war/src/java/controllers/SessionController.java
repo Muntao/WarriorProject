@@ -71,7 +71,7 @@ public class SessionController implements Serializable {
             konto = new Konto();
             return "login";
         }
-        return "/index";
+        return "/index?faces-redirect=true";
 
     }
     
@@ -80,7 +80,7 @@ public class SessionController implements Serializable {
             konto = new Konto();
             logged = false;
         }
-        return "/index";
+        return "/index?faces-redirect=true";
     }
 
 }

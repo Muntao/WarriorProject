@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/customerTemplate.xhtml">
+            <ui:define name="contentCustomer">
+                <div class="clients">
+                    <h1>Dane klienta </h1>
+
+                    <h:form id="panelAdd">
+                        <h:panelGrid  columns="3">
+
+                            <h:outputLabel  value="Imie: " />
+<!--                            <h:outputText class="form-control" value="#{registerController.klient.klientImie}"/>
+                            <h:message for="" style="color:red" />
+
+                            <h:outputLabel value="Nazwisko: " />
+                            <h:outputText class="form-control" value="#{registerController.klient.klientNazwisko}"/>
+                            <h:message for="" style="color:red" />
+
+                            <h:panelGroup>
+                                <h:outputLabel  value="" />
+                                <h:inputHidden id="hidden_value1" value="#{registerController.klient.klientId}"/>
+                            </h:panelGroup>
+                            <h:message for="" style="color:red" />
+                            <h:message for="" style="color:red" />
+
+                            <h:outputLabel  value="Procent zniżki: " />
+                            <h:inputText id="nazwisko" class="form-control" value="#{registerController.klient.klientProcentZnizki}" validator="DiscountValidator"/>
+                            <h:message for="nazwisko" style="color:red" />
+                        </h:panelGrid>
+                        <br/>
+                        <h:commandButton class="btn btn-primary" value="Zapisz" action="#{registerController.update()}"/>-->
+
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

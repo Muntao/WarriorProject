@@ -9,6 +9,7 @@
         <ui:composition>
             <div class="menu">
                 <ul>
+
                    <li><h:link value="Index" outcome="index.xhtml"/></li>
                    <li><h:link value="Zaloguj" outcome="login.xhtml"/></li>
                    <li><h:link value="Admin" outcome="admin/adminIndex.xhtml"/></li>
@@ -16,7 +17,7 @@
                    
                    
                    <c:choose>
-                       <c:when test="#{sessionController.logged and sessionController.konto.kontoUprawnienia == 'ADMIN'}">
+                       <c:when test="#{sessionController.logged and sessionController.isAdmin}">
                                     <li><h:link outcome="/admin/kurs/kurs"><i class="fa fa-cog" aria-hidden="true"></i> Panel </h:link></li>
                                     <li><h:link outcome="/session/wyloguj"><span class="glyphicon glyphicon-user"></span> Wyloguj </h:link></li>
                                 </c:when>
@@ -27,76 +28,9 @@
                                     <li><h:link outcome="/session/rejestracja"><span class="glyphicon glyphicon-user"></span> Rejestracja</h:link></li>
                                     <li><h:link outcome="/session/zaloguj"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</h:link></li>
                                 </c:otherwise>
-                            </c:choose> 
+                            </c:choose>                   
                    
-                   
-    <!--                 <li><h:link value="Kontakt" outcome="#{pageController.getPage('/contact.xhtml')}"/></li>
-                    <li><h:link value="Oferta" outcome="#{pageController.getPage('/offer.xhtml')}"/></li>
-
-
-                    <c:if test="#{loginController.checkLogged() == false}">
-                        <li style="float:right"><h:link value="Rejestracja" outcome="#{pageController.getPage('/register.xhtml')}"/></li>
-                        <li style="float:right"><h:link value="Zaloguj" outcome="#{pageController.getPage('/login.xhtml')}"/></li>
-                    </c:if>
-                    <c:if test="#{loginController.checkLogged() == true}">
-                        <c:if test="#{loginController.checkPermission() == 'KLIENT'}">
-                            <li><h:link value="Klient" outcome="#{pageController.getPage('/customerPages/customer/customerView.xhtml')}"/></li>
-                        </c:if>
-
-                        <c:if test="#{loginController.checkPermission() == 'Super'}">
-                            <li><h:link value="Pracownik" outcome="#{pageController.getPage('/adminPages/employees/employees.xhtml')}"/></li>
-                        </c:if>
-                        <c:if test="#{loginController.checkPermission() == 'PRACOWNIK'}">
-                            <li><h:link value="Zakład" outcome="#{pageController.getPage('/why/order/order.xhtml')}"/></li>
-                        </c:if>
-
-
-                        <c:if test="#{loginController.klientAccount != null}">
-
-                            <div class="client-name-header">
-                                <a href="/Prodzekt-war/faces/customerPages/customer/customerView.xhtml" title="Pokaż mój profil">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <h:outputLabel value="#{loginController.klientAccount.klientImie}"/>
-                                    <h:outputLabel value="#{loginController.klientAccount.klientNazwisko}"/>
-                                </a>
-                            </div>
-                        </c:if> 
-
-                        <c:if test="#{loginController.pracownikAccount != null}">
-                            <div class="client-name-header">
-                                <c:if test="#{loginController.pracownikAccount.pracownikZakladIdFk != null}">
-                                    <a href="/Prodzekt-war/faces/why/services/services.xhtml">
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                        <h:outputLabel value="#{loginController.pracownikAccount.pracownikImie}"/>
-                                        <h:outputLabel value="#{loginController.pracownikAccount.pracownikNazwisko}"/>
-                                    </a>
-                                </c:if>
-                                <c:if test="#{loginController.pracownikAccount.pracownikOddzialIdFk != null}">
-                                    <a href="/Prodzekt-war/faces/adminPages/admin/admin.xhtml">
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                        <h:outputLabel value="#{loginController.pracownikAccount.pracownikImie}"/>
-                                        <h:outputLabel value="#{loginController.pracownikAccount.pracownikNazwisko}"/>
-                                    </a>
-                                </c:if>
-
-                            </div>
-                        </c:if> 
-
-                        <c:if test="#{(loginController.pracownikAccount == null)}">
-                            <c:if test="#{(loginController.klientAccount == null)}">
-                                <div class="client-name-header">
-                                    <a href="/Prodzekt-war/faces/customerPages/index.xhtml">
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                        <h:outputLabel value="Administrator"/>
-                                    </a>
-                                </div>
-                            </c:if>
-                        </c:if> 
-
-                        <li style="float:right">
-                            <h:link value ="Wyloguj" outcome="#{pageController.getPageParams('/login.xhtml', 'faces-redirect=true&amp;logout=true')}"/>
-                        </li>
-                    </c:if>-->
+ 
                 </ul>
             </div>
 
