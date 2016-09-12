@@ -58,10 +58,6 @@ public class sessionFilter implements Filter {
             // Jeżeli zalogowany i niema administratorskich uprawnien to 403
             httpResponse.sendError(403);
         }
-        if (!uri.contains("/admin/")) {
-            // Jeżeli zalogowany i przeglada panel uzytkownika to zmien w kontrolerze na zalogowanego
-            kontoController.setKonto(sessionController.getKonto());  
-        }
         chain.doFilter(request, response);
     }
 
