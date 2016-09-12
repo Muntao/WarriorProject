@@ -12,31 +12,26 @@
 <ui:composition template="/templates/pageTemplate.xhtml">
             <ui:define name="content">
                 <h2 class="table-title"><h:outputText value="Panel Rejestracji"/><i></i></h2> 
-<!--                <f:view>
+               <f:view>
                     <h:form>                        
                         <h:panelGrid columns="2">
                             <h:outputLabel value="Imie:" for="uzytkownikImie" />
-                            <h:inputText class="form-control" id="uzytkownikImie" value="#{rejestracjaBean.user.uzytkownikImie}" title="UzytkownikImie" required="true" requiredMessage="Pole IMIE jest wymagane." validatorMessage="String is not valid (only characters a-z A-Z)">
+                            <h:inputText class="form-control" id="uzytkownikImie" value="#{rejestracjaBean.klient.klientImie}" title="UzytkownikImie" required="true" requiredMessage="Pole IMIE jest wymagane." validatorMessage="String is not valid (only characters a-z A-Z)">
                                 <f:validator validatorId="OnlyLettersValidator" />
                                 <f:validateLength minimum="3" maximum="50" />
                             </h:inputText>
                             <h:outputLabel value="Nazwisko:" for="uzytkownikNazwisko" />
-                            <h:inputText class="form-control" id="uzytkownikNazwisko" value="#{rejestracjaBean.user.uzytkownikNazwisko}" title="UzytkownikNazwisko" required="true" requiredMessage="Pole NAZWISKO jest wymagane.">
+                            <h:inputText class="form-control" id="uzytkownikNazwisko" value="#{rejestracjaBean.klient.klientNazwisko}" title="UzytkownikNazwisko" required="true" requiredMessage="Pole NAZWISKO jest wymagane.">
                                 <f:validator validatorId="OnlyLettersValidator" />
                                 <f:validateLength minimum="3" maximum="50" />
                             </h:inputText>
-                            <h:outputLabel value="Email:" for="uzytkownikEmail" /> 
-                            <h:inputText class="form-control" id="uzytkownikEmail" value="#{rejestracjaBean.user.uzytkownikEmail}" title="UzytkownikEmail" required="true" requiredMessage="Pole EMAIL jest wymagane.">
-                                <f:validateLength minimum="3" maximum="50" />
-                                <f:validator validatorId="EmailValidator" />
-                            </h:inputText>
                             <h:outputLabel value="Login:" for="uzytkownikLogin" />
-                            <h:inputText class="form-control"  id="uzytkownikLogin" value="#{rejestracjaBean.user.uzytkownikLogin}" title="UzytkownikLogin" required="true" requiredMessage="Pole LOGIN jest wymagane.">
+                            <h:inputText class="form-control"  id="uzytkownikLogin" value="#{rejestracjaBean.konto.kontoLogin}" title="UzytkownikLogin" required="true" requiredMessage="Pole LOGIN jest wymagane.">
                                 <f:validateLength minimum="3" maximum="50" />
                                 <f:validator validatorId="OnlyLettersAndNumbersValidator" />
                             </h:inputText> 
                             <h:outputLabel value="Hasło:" for="uzytkownikHaslo" />
-                            <h:inputSecret class="form-control" id="uzytkownikHaslo" value="#{rejestracjaBean.user.uzytkownikHaslo}" title="UzytkownikHaslo" required="true" requiredMessage="Pole HASLO jest wymagane.">
+                            <h:inputSecret class="form-control" id="uzytkownikHaslo" value="#{rejestracjaBean.konto.kontoHaslo}" title="UzytkownikHaslo" required="true" requiredMessage="Pole HASLO jest wymagane.">
                                 <f:validateLength minimum="3" maximum="50" />
                                 <f:validator validatorId="OnlyLettersAndNumbersValidator" />
                             </h:inputSecret>  
@@ -48,8 +43,7 @@
                         </h:panelGrid> 
                         <h:commandButton class="button pull-right" action="#{rejestracjaBean.register()}" value="Zarejestruj się!"/>
                     </h:form>
-                </f:view>-->
-
+                </f:view>
             </ui:define> 
         </ui:composition>
     </h:body>
