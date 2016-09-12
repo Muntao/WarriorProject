@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author JacekM
+ * @author Muntao
  */
 @Entity
 @Table(name = "klient")
@@ -61,14 +61,14 @@ public class Klient implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "znajomiKlient2IdFk")
     private Collection<Znajomi> znajomiCollection1;
     @JoinColumn(name = "klient_adres_id_fk", referencedColumnName = "adres_id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Adres klientAdresIdFk;
-    @JoinColumn(name = "klient_konto_id_fk", referencedColumnName = "konto_id")
-    @ManyToOne(optional = false)
-    private Konto klientKontoIdFk;
     @JoinColumn(name = "klient_dane_klienta_id_fk", referencedColumnName = "dane_klienta_id")
     @ManyToOne
     private DaneKlienta klientDaneKlientaIdFk;
+    @JoinColumn(name = "klient_konto_id_fk", referencedColumnName = "konto_id")
+    @ManyToOne(optional = false)
+    private Konto klientKontoIdFk;
     @JoinColumn(name = "klient_zainteresowania_id_fk", referencedColumnName = "zainteresowania_id")
     @ManyToOne
     private Zainteresowania klientZainteresowaniaIdFk;
@@ -138,20 +138,20 @@ public class Klient implements Serializable {
         this.klientAdresIdFk = klientAdresIdFk;
     }
 
-    public Konto getKlientKontoIdFk() {
-        return klientKontoIdFk;
-    }
-
-    public void setKlientKontoIdFk(Konto klientKontoIdFk) {
-        this.klientKontoIdFk = klientKontoIdFk;
-    }
-
     public DaneKlienta getKlientDaneKlientaIdFk() {
         return klientDaneKlientaIdFk;
     }
 
     public void setKlientDaneKlientaIdFk(DaneKlienta klientDaneKlientaIdFk) {
         this.klientDaneKlientaIdFk = klientDaneKlientaIdFk;
+    }
+
+    public Konto getKlientKontoIdFk() {
+        return klientKontoIdFk;
+    }
+
+    public void setKlientKontoIdFk(Konto klientKontoIdFk) {
+        this.klientKontoIdFk = klientKontoIdFk;
     }
 
     public Zainteresowania getKlientZainteresowaniaIdFk() {

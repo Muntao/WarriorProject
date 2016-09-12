@@ -63,7 +63,7 @@ public class SessionController implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Zostałeś poprawnie zalogowany!"));
             logged = true;
             if(konto.getKontoUprawnienia().equals(Konto.ADMIN)){
-                this.isAdmin = true;
+                isAdmin = true;
             }
             
         } else {
@@ -79,8 +79,9 @@ public class SessionController implements Serializable {
         if (logged == true) {
             konto = new Konto();
             logged = false;
+            isAdmin = false;
         }
-        return "/index?faces-redirect=true";
+        return "";
     }
 
 }
