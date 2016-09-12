@@ -1,10 +1,8 @@
 package backbeans;
 
 import entities.Adres;
-import entities.DaneKlienta;
 import entities.Konto;
 import entities.Klient;
-import entities.Zainteresowania;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -65,13 +63,13 @@ public class RejestracjaBean implements Serializable{
     }
 
     public String register() {
-//        if (this.kontoFacade.findByKontoLogin(konto) != null) {
-//            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Istnieje już takie konto!"));
-//            klient = new Klient();
-//            konto = new Konto();
-//            return "rejestracja";
-//        }
-//        if (haslo.equals(konto.getKontoHaslo())) {
+        if (this.kontoFacade.findByKontoLogin(konto) != null) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Istnieje już takie konto!"));
+            klient = new Klient();
+            konto = new Konto();
+            return "rejestracja";
+        }
+        if (haslo.equals(konto.getKontoHaslo())) {
             this.konto.setKontoUprawnienia("");
             this.kontoFacade.create(konto);
             this.klient.setKlientKontoIdFk(konto);
@@ -80,12 +78,12 @@ public class RejestracjaBean implements Serializable{
             
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Zostałeś poprawnie zarejestrowany!"));
             return "zaloguj";
-//        } else {
-//            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rejestracja nie powiodła się!"));
-//            klient = new Klient();
-//            konto = new Konto();
-//            return "rejestracja";
-//        }
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rejestracja nie powiodła się!"));
+            klient = new Klient();
+            konto = new Konto();
+            return "rejestracja";
+        }
     }
 
     public RejestracjaBean() {

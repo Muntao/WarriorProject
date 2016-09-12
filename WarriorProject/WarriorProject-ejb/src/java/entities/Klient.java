@@ -36,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Klient.findAll", query = "SELECT k FROM Klient k"),
     @NamedQuery(name = "Klient.findByKlientId", query = "SELECT k FROM Klient k WHERE k.klientId = :klientId"),
     @NamedQuery(name = "Klient.findByKlientImie", query = "SELECT k FROM Klient k WHERE k.klientImie = :klientImie"),
-    @NamedQuery(name = "Klient.findByKlientNazwisko", query = "SELECT k FROM Klient k WHERE k.klientNazwisko = :klientNazwisko")})
+    @NamedQuery(name = "Klient.findByKlientNazwisko", query = "SELECT k FROM Klient k WHERE k.klientNazwisko = :klientNazwisko"),
+    @NamedQuery(name = "Klient.findByKontoId", query = "SELECT k FROM Klient k WHERE k.klientKontoIdFk.kontoId = :klientKontoIdFk")})
 public class Klient implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -5,6 +5,7 @@
  */
 package validators;
 
+import entities.Klient;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -16,26 +17,21 @@ import javax.faces.validator.ValidatorException;
  *
  * @author Muntao
  */
-@FacesValidator("DostepValidator")
-public class DostepValidator implements Validator {
+@FacesValidator("CourseValidator")
+public class KlientValidator implements Validator {
 
-    public DostepValidator() {
+    public KlientValidator() {
 
     }
 
     @Override
     public void validate(FacesContext context, UIComponent component,
             Object value) throws ValidatorException {
-        
-        boolean a = Integer.parseInt(value.toString()) == 1;
-        boolean b = Integer.parseInt(value.toString()) == 0;
 
-        if (!(a || b)){    
- 
-            FacesMessage msg = new FacesMessage("Pole DOSTEP jest niepoprawne!", "Pole DOSTEP jest niepoprawny!");
+        if (!(value instanceof Klient)) {
+            FacesMessage msg = new FacesMessage("Pole KONTO jest niepoprawne!", "Pole KLIENT jest niepoprawne!");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(msg);
-
         }
     }
 }

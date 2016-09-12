@@ -37,6 +37,16 @@
                             </h:panelGrid>
                         </div>
                     </div>
+
+
+                    <h:form enctype="multipart/form-data">
+                        <h2 class="table-title"><h:outputText value="Wrzuć fote"/><i></i></h2> 
+                        <h:outputLabel value="Nazwa" for="picName" />
+                        <h:inputText class="form-control" id="picName" value="#{uploadBean.zdjecie.zdjecieTag}" title="ZdjecieTag" required="true" requiredMessage="Zdjecie jest wymagane"/>
+                        <h:inputFile value="#{uploadBean.file}"></h:inputFile>
+                        <h:commandButton class="btn pull-right button button-small" value="Wrzuć fote" action="#{uploadBean.uploadImage()}"></h:commandButton>
+                    </h:form>
+
                 </div>
             </ui:define>
         </ui:composition>
