@@ -1,12 +1,16 @@
 package backbeans;
 
+import entities.Adres;
+import entities.DaneKlienta;
 import entities.Konto;
 import entities.Klient;
+import entities.Zainteresowania;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import models.AdresFacade;
 import models.KontoFacade;
 import models.KlientFacade;
 
@@ -17,10 +21,20 @@ public class RejestracjaBean {
     @EJB
     private KontoFacade kontoFacade;
     private KlientFacade klientFacade;
+    private AdresFacade adresFacade;
 
     private Konto konto = new Konto();
     private Klient klient = new Klient();
+    private Adres adres = new Adres();
 
+    public Adres getAdres() {
+        return adres;
+    }
+
+    public void setAdres(Adres adres) {
+        this.adres = adres;
+    }
+    
     private String haslo;
 
     public String getHaslo() {
@@ -55,11 +69,9 @@ public class RejestracjaBean {
             return "rejestracja";
         }
         if (haslo.equals(konto.getKontoHaslo())) {
-            this.konto.setKontoUprawnienia("");
             this.kontoFacade.create(konto);
-           
-            this.klient.setKlientKontoIdFk(konto);
-            this.klientFacade.create(klient);
+
+            
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Zostałeś poprawnie zarejestrowany!"));
             return "zaloguj";
         } else {

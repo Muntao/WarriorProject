@@ -15,28 +15,28 @@
                <f:view>
                     <h:form>                        
                         <h:panelGrid columns="2">
-                            <h:outputLabel value="Imie:" for="uzytkownikImie" />
-                            <h:inputText class="form-control" id="uzytkownikImie" value="#{rejestracjaBean.klient.klientImie}" title="UzytkownikImie" required="true" requiredMessage="Pole IMIE jest wymagane." validatorMessage="String is not valid (only characters a-z A-Z)">
+                            <h:outputLabel value="Imie:" for="klientImie" />
+                            <h:inputText class="form-control" id="klientImie" value="#{rejestracjaBean.klient.klientImie}" title="klientImie" required="true" requiredMessage="Pole IMIE jest wymagane." validatorMessage="String is not valid (only characters a-z A-Z)">
                                 <f:validator validatorId="OnlyLettersValidator" />
                                 <f:validateLength minimum="3" maximum="50" />
                             </h:inputText>
-                            <h:outputLabel value="Nazwisko:" for="uzytkownikNazwisko" />
-                            <h:inputText class="form-control" id="uzytkownikNazwisko" value="#{rejestracjaBean.klient.klientNazwisko}" title="UzytkownikNazwisko" required="true" requiredMessage="Pole NAZWISKO jest wymagane.">
+                            <h:outputLabel value="Nazwisko:" for="klientNazwisko" />
+                            <h:inputText class="form-control" id="klientNazwisko" value="#{rejestracjaBean.klient.klientNazwisko}" title="klientNazwisko" required="true" requiredMessage="Pole NAZWISKO jest wymagane.">
                                 <f:validator validatorId="OnlyLettersValidator" />
                                 <f:validateLength minimum="3" maximum="50" />
                             </h:inputText>
-                            <h:outputLabel value="Login:" for="uzytkownikLogin" />
-                            <h:inputText class="form-control"  id="uzytkownikLogin" value="#{rejestracjaBean.konto.kontoLogin}" title="UzytkownikLogin" required="true" requiredMessage="Pole LOGIN jest wymagane.">
+                            <h:outputLabel value="Login:" for="kontoLogin" />
+                            <h:inputText class="form-control"  id="kontoLogin" value="#{rejestracjaBean.konto.kontoLogin}" title="kontoLogin" required="true" requiredMessage="Pole LOGIN jest wymagane.">
                                 <f:validateLength minimum="3" maximum="50" />
                                 <f:validator validatorId="OnlyLettersAndNumbersValidator" />
                             </h:inputText> 
-                            <h:outputLabel value="Hasło:" for="uzytkownikHaslo" />
-                            <h:inputSecret class="form-control" id="uzytkownikHaslo" value="#{rejestracjaBean.konto.kontoHaslo}" title="UzytkownikHaslo" required="true" requiredMessage="Pole HASLO jest wymagane.">
+                            <h:outputLabel value="Hasło:" for="kontoHaslo" />
+                            <h:inputSecret class="form-control" id="kontoHaslo" value="#{rejestracjaBean.konto.kontoHaslo}" title="kontoHaslo" required="true" requiredMessage="Pole HASLO jest wymagane.">
                                 <f:validateLength minimum="3" maximum="50" />
                                 <f:validator validatorId="OnlyLettersAndNumbersValidator" />
                             </h:inputSecret>  
-                            <h:outputLabel value="Powtórz hasło:" for="uzytkownikHaslo2" />
-                            <h:inputSecret class="form-control" id="uzytkownikHaslo2" value="#{rejestracjaBean.haslo}" title="UzytkownikHaslo2" required="true" requiredMessage="Pole POWTORZ HASLO jest wymagane.">
+                            <h:outputLabel value="Powtórz hasło:" for="kontoHaslo2" />
+                            <h:inputSecret class="form-control" id="kontoHaslo2" value="#{rejestracjaBean.haslo}" title="kontoHaslo2" required="true" requiredMessage="Pole POWTORZ HASLO jest wymagane.">
                                 <f:validateLength minimum="3" maximum="50" />
                                 <f:validator validatorId="OnlyLettersAndNumbersValidator" />
                             </h:inputSecret>
