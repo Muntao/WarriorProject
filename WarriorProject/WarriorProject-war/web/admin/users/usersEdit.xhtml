@@ -10,7 +10,7 @@
     <h:body>
         <ui:composition template="/templates/adminTemplate.xhtml">
             <ui:define name="contentAdmin">
-                <h1>Dodaj użytkownika</h1>
+                <h1>Edytuj użytkownika</h1>
                 <div class="">
                     <f:view>
                         <h:form>
@@ -19,16 +19,16 @@
                                 <h:inputText id="klientImie" value="#{klientController.user.klientImie}" title="KlientImie" required="true" requiredMessage="The KlientImie field is required."/>
                                 <h:outputLabel value="KlientNazwisko:" for="klientNazwisko" />
                                 <h:inputText id="klientNazwisko" value="#{klientController.user.klientNazwisko}" title="KlientNazwisko" required="true" requiredMessage="The KlientNazwisko field is required."/>
-
+                               
                                 <h:outputLabel value="KontoLogin:" for="kontoLogin" />
                                 <h:inputText id="kontoLogin" value="#{klientController.konto.kontoLogin}" title="KontoLogin" required="true" requiredMessage="The KontoLogin field is required."/>
                                 <h:outputLabel value="KontoHaslo:" for="kontoHaslo" />
                                 <h:inputText id="kontoHaslo" value="#{klientController.konto.kontoHaslo}" title="KontoHaslo" required="true" requiredMessage="The KontoHaslo field is required."/>
                                 <h:outputLabel value="KontoUprawnienia:" for="kontoUprawnienia" />
                                 <h:inputText id="kontoUprawnienia" value="#{klientController.konto.kontoUprawnienia}" title="KontoUprawnienia" />
-
+                                   
+                                <h:commandButton class="btn pull-right button button-small" action="${klientController.edit()}" value="Dodaj"></h:commandButton>                    
                             </h:panelGrid>
-                            <h:commandButton class="btn pull-right button button-small" action="${klientController.add()}" value="Dodaj"></h:commandButton>                    
                         </h:form>
                     </f:view>
                 </div>

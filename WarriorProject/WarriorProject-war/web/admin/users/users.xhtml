@@ -14,25 +14,33 @@
                 <div class="">
                     <f:view>
                         <h:form>
-                            <h1><h:outputText value="List"/></h1>
-                            <h:dataTable value="#{klientController.findAllUsers()}" var="item">
+                            <div class="col-xs-4">
+                                <h:commandLink class="button pull-right" value="Nowy użytkownik" action="#{klientController.addNewUser()}"/>
+                            </div>
+                            <h:dataTable value="#{klientController.findAllUsers()}" class="admin-table" var="item">
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="KlientId"/>
+                                        <h:outputText value="Id"/>
                                     </f:facet>
                                     <h:outputText value="#{item.klientId}"/>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="KlientImie"/>
+                                        <h:outputText value="Imie"/>
                                     </f:facet>
                                     <h:outputText value="#{item.klientImie}"/>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="KlientNazwisko"/>
+                                        <h:outputText value="Nazwisko"/>
                                     </f:facet>
                                     <h:outputText value="#{item.klientNazwisko}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Telefon"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.klientAdresIdFk.adresTelefon}"/>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
@@ -46,8 +54,15 @@
                                     </f:facet>
                                     <h:outputText value="#{item.klientKontoIdFk.kontoLogin}"/>
                                 </h:column>
-                               
-                                
+                                <h:column> 
+                                    <f:facet name="header">
+                                        <h:outputText value="Akcja"/>
+                                    </f:facet>
+                                    <h:commandLink action="#{klientController.edit(item)}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></h:commandLink> &nbsp;   
+                                    <h:commandLink action="#{klientController.detail(item)}"><i class="fa fa-pencil" aria-hidden="true"></i></h:commandLink> &nbsp;
+                                    <h:commandLink action="#{klientController.remove(item)}" onclick="return confirm('Jestes pewny?')"><i class="fa fa-trash-o" aria-hidden="true"></i></h:commandLink>
+                                </h:column>
+
                             </h:dataTable>
                         </h:form>
                     </f:view>
