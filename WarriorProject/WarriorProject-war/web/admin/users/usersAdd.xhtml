@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/adminTemplate.xhtml">
+            <ui:define name="contentAdmin">
+                <h1>Dodaj użytkownika</h1>
+                <div class="">
+                    <f:view>
+                        <h:form>
+                            <h1><h:outputText value="Create/Edit"/></h1>
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="KlientId:" for="klientId" />
+                                <h:inputText id="klientId" value="#{klientController.user.klientId}" title="KlientId" required="true" requiredMessage="The KlientId field is required."/>
+                                <h:outputLabel value="KlientImie:" for="klientImie" />
+                                <h:inputText id="klientImie" value="#{klientController.user.klientImie}" title="KlientImie" required="true" requiredMessage="The KlientImie field is required."/>
+                                <h:outputLabel value="KlientNazwisko:" for="klientNazwisko" />
+                                <h:inputText id="klientNazwisko" value="#{klientController.user.klientNazwisko}" title="KlientNazwisko" required="true" requiredMessage="The KlientNazwisko field is required."/>
+                                <h:outputLabel value="KlientAdresIdFk:" for="klientAdresIdFk" />
+                                <h:selectOneMenu id="klientAdresIdFk" value="#{klientController.user.klientAdresIdFk}" title="KlientAdresIdFk" required="true" requiredMessage="The KlientAdresIdFk field is required.">
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItems value="#{fixme}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value="KlientKontoIdFk:" for="klientKontoIdFk" />
+                                <h:selectOneMenu id="klientKontoIdFk" value="#{klientController.user.klientKontoIdFk}" title="KlientKontoIdFk" required="true" requiredMessage="The KlientKontoIdFk field is required.">
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItems value="#{fixme}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value="KlientDaneKlientaIdFk:" for="klientDaneKlientaIdFk" />
+                                <h:selectOneMenu id="klientDaneKlientaIdFk" value="#{klientController.user.klientDaneKlientaIdFk}" title="KlientDaneKlientaIdFk" >
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItems value="#{fixme}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value="KlientZainteresowaniaIdFk:" for="klientZainteresowaniaIdFk" />
+                                <h:selectOneMenu id="klientZainteresowaniaIdFk" value="#{klientController.user.klientZainteresowaniaIdFk}" title="KlientZainteresowaniaIdFk" >
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItems value="#{fixme}"/>
+                                </h:selectOneMenu>
+                            </h:panelGrid>
+                        </h:form>
+                    </f:view>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

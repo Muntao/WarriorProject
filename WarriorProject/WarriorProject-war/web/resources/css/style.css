@@ -54,7 +54,7 @@
 
 
 
-.client-name-header {
+/*.client-name-header {
     display: inline;
     padding: 5px;
     margin-left: 45%;
@@ -71,7 +71,7 @@
 .client-name-header i {
     padding-right: 10px;
     color: whitesmoke;
-}
+}*/
 
 /* login */
 #loginForm {
@@ -199,7 +199,7 @@
 /* END OF CONTACT */
 
 /*************offer***************/
-.offer {
+/*.offer {
     font-size: 16px;
 }
 .offer .listed_products .img-thumbnail {
@@ -235,7 +235,7 @@
     border-bottom: groove;
     border-width: 1px;
     border-color: rgb(214, 217, 211);
-}
+}*/
 /* END OF OFFER */
 
 /*************admin***************/
@@ -334,7 +334,7 @@
     border-width: 1px;
     border-color: rgb(214, 217, 211);
 }
-.contentAdmin .table-data {
+/*.contentAdmin .table-data {
     padding-top: 10px;
     border: 0;
     border-collapse: collapse;
@@ -356,25 +356,25 @@
     padding: 3px;
 
 }
-/***********/
-/*.contentAdmin*/ #panelAdd table, #panelAdd{
+*********
+.contentAdmin #panelAdd table, #panelAdd{
     padding-top: 2%;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
-/*.contentAdmin*/ #panelAdd table tr.spaceUnder > td
+.contentAdmin #panelAdd table tr.spaceUnder > td
 {
     padding-bottom: 5em;
 }
-/*.contentAdmin*/ #panelAdd table td{
+.contentAdmin #panelAdd table td{
     text-align: left;
 }
 
 
 
 .table-header {
-    /*    border: solid 1px;*/
+        border: solid 1px;
     position: relative;
     border-color: rgb(76, 175, 80);
     background-color: #3b5998;
@@ -432,18 +432,18 @@ table.dataTable {
     background-color: #FCF59A
 }
 
-/*.contentAdmin */.actions{
+.contentAdmin .actions{
     padding-top: 2%;
     padding-bottom: 2%;
 }
-/*.contentAdmin */.actions ul{
+.contentAdmin .actions ul{
     list-style-type: none;
     display: inline-flex;
     padding-left: 0;
 }
-/*.contentAdmin*/ .actions li{
+.contentAdmin .actions li{
     padding-right: 10px;
-}
+}*/
 
 /*******************/
 .row .col-md-3 ul{
@@ -454,19 +454,6 @@ table.dataTable {
 .actions a:hover {
     text-decoration: none;
     color: white;
-}
-
-
-.add-worker  {
-    color: white;
-    text-decoration: none;
-    background-color: #3b5998;
-    padding: 10px;
-    border-radius: 25px;
-}
-
-.add-worker:hover {
-    background-color: rgb(139, 157, 195);
 }
 
 /* client name in header */
@@ -564,113 +551,16 @@ table.dataTable {
     text-align: center;
     margin: 10px 0px 0px 120px;
 }
-
+/*
 
 
 .insurance-title {
     font-size: 30px;
     border-bottom: 1px solid;
-}
+}*/
 
 
 
-
-
-/* DATATABLES */
-
-.dataTables_length, .dataTables_filter {
-    padding: 10px 5px 0px 5px;
-}
-
-.dataTables_info {
-    margin: 0;
-    padding: 5px 0px 5px 5px;
-}
-
-.dataTables_filter {
-    padding-bottom: 5px;
-}
-
-
-/* END OF DATATABLES */
-
-/*************menuWorker***************/
-
-.menuWorker{
-    position: relative;
-}
-
-.menuWorker {
-    float: left;
-    margin-top: 4%;
-}
-.contentWorker {
-    position: relative;
-    margin-left: 1%;
-    overflow: hidden;
-}
-#content .menuWorker {
-    width: 13%;
-    margin-right: 10px;
-    font-size: 1.3em;
-}
-#content .menuWorker ul {
-    list-style-type: none;
-    padding: 0;
-    background-color: #3b5998;
-    position: relative;
-}
-#content .menuWorker li a {
-    display: block;
-    color: white;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
-}
-#content .menuWorker li:hover:not(.active) {
-    background-color: #8b9dc3;
-}
-#content .menuWorker .active {
-    background-color: #052059;
-}
-#content .menuWorker ul h2{
-    background-color: #001E5C;
-    color: white;
-    text-align: center;
-    font-family: sansation-light;
-    border-bottom: rgb(235, 235, 235)solid;
-    border-width: 8px;
-    margin-bottom: 0;
-}
-
-/*************contentWorker***************/
-.contentWorker h1{
-    text-align: center;
-    font-family: sansation-light;
-    padding-bottom: 2%;
-    border-bottom: groove;
-    border-width: 1px;
-    border-color: rgb(214, 217, 211);
-}
-.contentWorker .table-data {
-    padding-top: 10px;
-    border: 0;
-    border-collapse: collapse;
-    border-width: 0px;
-    border-color: rgb(214, 217, 211);
-
-}
-.contentWorker .table-data td{
-    font-size: 14px;
-    padding: 3px;
-}
-.contentWorker .table-data tr:nth-child(even){background-color: #f2f2f2}
-.table-data th {
-    background-color: #3b5998;
-    color: white;
-    padding: 3px;
-
-}
-/***********/
 /*Worker & Admin profile*/
 
 .box-zaklad-wrapper {
@@ -796,7 +686,3 @@ table.dataTable {
     margin-bottom: 0;
 }
 
-.buy-insurance-box {
-    width: 50%;
-    margin: 0 auto;
-}

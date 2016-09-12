@@ -9,31 +9,23 @@
         <ui:composition>
             <div class="menu">
                 <ul>
-
-                   <li><h:link value="Index" outcome="index.xhtml"/></li>
-                   <li><h:link value="Zaloguj" outcome="login.xhtml"/></li>
-                   <li><h:link value="Admin" outcome="admin/adminIndex.xhtml"/></li>
-                   <li><h:link value="Mój profil" outcome="customer/customerIndex.xhtml"/></li>
-                   
-                   
-                   <c:choose>
-                       <c:when test="#{sessionController.logged and sessionController.isAdmin}">
-                                    <li><h:link outcome="/admin/kurs/kurs"><i class="fa fa-cog" aria-hidden="true"></i> Panel </h:link></li>
-                                    <li><h:link outcome="/session/wyloguj"><span class="glyphicon glyphicon-user"></span> Wyloguj </h:link></li>
-                                </c:when>
-                                <c:when test="#{sessionController.logged}">
-                                    <li><h:link outcome="/session/wyloguj"><span class="glyphicon glyphicon-user"></span> Wyloguj </h:link></li>
-                                </c:when>
-                                <c:otherwise>
-                                    <li><h:link outcome="/session/rejestracja"><span class="glyphicon glyphicon-user"></span> Rejestracja</h:link></li>
-                                    <li><h:link outcome="/session/zaloguj"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</h:link></li>
-                                </c:otherwise>
-                            </c:choose>                   
-                   
- 
+                    <li><h:link value="Index" outcome="/index.xhtml"/></li>
+                    <c:choose>
+                        <c:when test="#{sessionController.logged and sessionController.isAdmin}">
+                            <li><h:link value="Admin" outcome="/admin/adminIndex.xhtml"/></li>
+                            <li style="float:right"><h:link value="Wyloguj" outcome="/session/wyloguj.xhtml"/></li>
+                        </c:when>
+                        <c:when test="#{sessionController.logged}">
+                            <li><h:link value="Mój profil" outcome="/customer/customerIndex.xhtml"/></li>
+                            <li style="float:right"><h:link value="Wyloguj" outcome="/session/wyloguj.xhtml"/></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><h:link value="Rejestracja" outcome="/session/rejestracja.xhtml"/></li>
+                            <li><h:link value="Zaloguj" outcome="/session/zaloguj.xhtml"/></li>
+                        </c:otherwise>
+                    </c:choose>      
                 </ul>
             </div>
-
         </ui:composition>
     </body>
 </html>
