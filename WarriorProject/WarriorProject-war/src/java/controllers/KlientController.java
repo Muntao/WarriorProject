@@ -144,6 +144,13 @@ public class KlientController implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usunięto użytkownika!"));
         return "users";
     }
+    
+    public String ban(Klient user) {
+        user.getKlientKontoIdFk().setKontoUprawnienia("ban");
+        this.klientFacade.edit(user);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usunięto użytkownika!"));
+        return "users";
+    }
 
     public Object findById(Object key) {
         return this.klientFacade.find(key);
