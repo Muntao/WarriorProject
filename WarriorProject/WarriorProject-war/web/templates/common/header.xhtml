@@ -17,6 +17,7 @@
                         </c:when>
                         <c:when test="#{sessionController.logged}">
                             <li><h:link value="Mój profil" outcome="/customer/customerIndex.xhtml"/></li>
+                            <li><h:link value="Znajdz" outcome="/customer/finder/finder.xhtml"/></li>
                             <li style="float:right"><h:link value="Wyloguj" outcome="/session/wyloguj.xhtml"/></li>
                         </c:when>
                         <c:otherwise>

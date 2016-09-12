@@ -147,8 +147,11 @@ public class KlientController implements Serializable {
     
     public String ban(Klient user) {
         user.getKlientKontoIdFk().setKontoUprawnienia("ban");
+        konto = user.getKlientKontoIdFk();
+        this.kontoFacade.edit(konto);
+        user.setKlientKontoIdFk(konto);
         this.klientFacade.edit(user);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usunięto użytkownika!"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Dodano bana!"));
         return "users";
     }
 
