@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package filters;
 
 import controllers.SessionController;
 import controllers.KontoController;
-import entities.Konto;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.Filter;
@@ -36,7 +30,6 @@ public class sessionFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        // Wylaczam sprawdzania logowania na czas pracy
         
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
@@ -48,7 +41,7 @@ public class sessionFilter implements Filter {
         }
         /*
         1. Jezeli nie zalogowany to przenoś na strone logowania
-        2. Jeżeli zalogowany to i chce sie zalogować to na index
+        2. Jeżeli zalogowany i chce sie zalogować to na przenosi na index
         3. Jeżeli zalogowany i chce się wylogować to wyloguj i na index
          */
         if (sessionController == null || !sessionController.isLogged()) { // Jezeli nie zalogowany to przenoś na strone logowania

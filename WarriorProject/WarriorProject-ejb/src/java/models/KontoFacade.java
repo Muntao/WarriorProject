@@ -37,4 +37,14 @@ public class KontoFacade extends AbstractFacade<Konto> {
         } 
         return null;        
     }
+    
+    public Konto findByKontoLogin(Konto konto) {
+        Query q = em.createNamedQuery("Konto.findByKontoLogin")
+                .setParameter("kontoLogin", konto.getKontoLogin());
+        List<Konto> result = q.getResultList();
+        if (result.size() > 0) {
+            return result.get(0);
+        } 
+        return null;        
+    }
 }
