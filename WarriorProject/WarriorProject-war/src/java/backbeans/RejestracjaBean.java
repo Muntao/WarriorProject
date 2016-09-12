@@ -5,6 +5,7 @@ import entities.DaneKlienta;
 import entities.Konto;
 import entities.Klient;
 import entities.Zainteresowania;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -16,11 +17,13 @@ import models.KlientFacade;
 
 @Named(value = "rejestracjaBean")
 @RequestScoped
-public class RejestracjaBean {
+public class RejestracjaBean implements Serializable{
 
     @EJB
     private KontoFacade kontoFacade;
+    @EJB
     private KlientFacade klientFacade;
+    @EJB
     private AdresFacade adresFacade;
 
     private Konto konto = new Konto();
@@ -62,24 +65,27 @@ public class RejestracjaBean {
     }
 
     public String register() {
-        if (this.kontoFacade.findByKontoLogin(konto) != null) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Istnieje już takie konto!"));
-            klient = new Klient();
-            konto = new Konto();
-            return "rejestracja";
-        }
-        if (haslo.equals(konto.getKontoHaslo())) {
+//        if (this.kontoFacade.findByKontoLogin(konto) != null) {
+//            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Istnieje już takie konto!"));
+//            klient = new Klient();
+//            konto = new Konto();
+//            return "rejestracja";
+//        }
+//        if (haslo.equals(konto.getKontoHaslo())) {
+            this.konto.setKontoUprawnienia("");
             this.kontoFacade.create(konto);
+            this.klient.setKlientKontoIdFk(konto);
+            this.klientFacade.create(klient);
 
             
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Zostałeś poprawnie zarejestrowany!"));
             return "zaloguj";
-        } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rejestracja nie powiodła się!"));
-            klient = new Klient();
-            konto = new Konto();
-            return "rejestracja";
-        }
+//        } else {
+//            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rejestracja nie powiodła się!"));
+//            klient = new Klient();
+//            konto = new Konto();
+//            return "rejestracja";
+//        }
     }
 
     public RejestracjaBean() {
