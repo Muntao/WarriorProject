@@ -55,17 +55,23 @@ public class SessionController implements Serializable {
     public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
-    
 
     public String login() {
         konto = kontoFacade.findByKontoLoginAndHaslo(konto);
         if (konto != null) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Zostałeś poprawnie zalogowany!"));
-            logged = true;
-            if(konto.getKontoUprawnienia().equals(Konto.ADMIN)){
-                isAdmin = true;
+            if (konto.getKontoUprawnienia().equals(Konto.BANNED)) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Twoje konto zostało zbanowane!"));
+                logged = false;
+                konto = new Konto();
+                return "/index?faces-redirect=true";
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Zostałeś poprawnie zalogowany!"));
+                logged = true;
+                if (konto.getKontoUprawnienia().equals(Konto.ADMIN)) {
+                    isAdmin = true;
+                }
             }
-            
+
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Login lub hasło jest błędne!"));
             konto = new Konto();
@@ -74,7 +80,7 @@ public class SessionController implements Serializable {
         return "/index?faces-redirect=true";
 
     }
-    
+
     public String logout() {
         if (logged == true) {
             konto = new Konto();
