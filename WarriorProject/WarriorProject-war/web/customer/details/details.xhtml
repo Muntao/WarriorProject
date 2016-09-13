@@ -12,30 +12,86 @@
         <ui:composition template="/templates/customerTemplate.xhtml">
             <ui:define name="contentCustomer">
                 <div class="clients">
-                    <h1> Klient info</h1>
+                    <h1> Moje dane</h1>
+                    #{klientController.loadKlient()}
+                    <h:form>
+                        <h:commandLink class="button pull-right" value="Edytuj" action="#{klientController.editDetails()}"/>
+                    </h:form>
 
+                    <br/>
                     <div class="data-view">
                         <div class="row">
                             <div class="col-md-3">
-                                <h4>Dane pracownika </h4>
+                                <h4>Dane podstawowe</h4>
                                 <br/>
                                 <ul>
                                     <li>
                                         <h:outputLabel  value="Imie: " />
-                                        <h:outputText value="#{registerController.klient.klientImie}"/>
+                                        <h:outputText value="#{klientController.user.klientImie}"/>
                                     </li>
                                     <li>
                                         <h:outputLabel  value="Nazwisko: " />
-                                        <h:outputText value="#{registerController.klient.klientNazwisko}"/>
+                                        <h:outputText value="#{klientController.user.klientNazwisko}"/>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div class="col-md-3">
+
+                                <h4>Adres</h4>
+                                <br/>
+                                <ul>
+                                    <li>
+                                        <h:outputLabel  value="Kod Pocztowy: " />
+                                        <h:outputText value="#{klientController.user.klientAdresIdFk.adresKodPocztowy}"/>
                                     </li>
                                     <li>
-                                        <h:outputLabel  value="Procent zniżki: " />
-                                        <h:outputText value="#{registerController.klient.klientProcentZnizki}"/>
+                                        <h:outputLabel  value="Miejscowość: " />
+                                        <h:outputText value="#{klientController.user.klientAdresIdFk.adresMiejscowosc}"/>
+                                    </li>
+                                    <li>
+                                        <h:outputLabel  value="Poczta: " />
+                                        <h:outputText value="#{klientController.user.klientAdresIdFk.adresPoczta}"/>
+                                    </li>
+                                    <li>
+                                        <h:outputLabel  value="Telefon: " />
+                                        <h:outputText value="#{klientController.user.klientAdresIdFk.adresTelefon}"/>
+                                    </li>
+                                    <li>
+                                        <h:outputLabel  value="Ulica: " />
+                                        <h:outputText value="#{klientController.user.klientAdresIdFk.adresUlica}"/>
                                     </li>
                                 </ul>
                             </div>
-                        </div>  
-                    </div>
+                            <div class="col-md-3">
+                                <h4>Dane personalne</h4>
+                                <br/>
+                                <ul>
+                                    <li>
+                                        <h:outputLabel  value="Data urodzenia: " />
+                                        <h:outputText value="#{klientController.user.klientDaneKlientaIdFk.daneKlientaDataUr}"/>
+                                    </li>
+                                    <li>
+                                        <h:outputLabel  value="Plec: " />
+                                        <h:outputText value="#{klientController.user.klientDaneKlientaIdFk.daneKlientaPlec}"/>
+                                    </li>
+                                    <li>
+                                        <h:outputLabel  value="Stan: " />
+                                        <h:outputText value="#{klientController.user.klientDaneKlientaIdFk.daneKlientaStan}"/>
+                                    </li>
+                                    <li>
+                                        <h:outputLabel  value="Waga: " />
+                                        <h:outputText value="#{klientController.user.klientDaneKlientaIdFk.daneKlientaWaga}"/>
+                                    </li>
+                                    <li>
+                                        <h:outputLabel  value="Wzrost: " />
+                                        <h:outputText value="#{klientController.user.klientDaneKlientaIdFk.daneKlientaWzrost}"/>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>  
                 </div>
             </ui:define>
         </ui:composition>

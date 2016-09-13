@@ -76,8 +76,6 @@ public class KlientController implements Serializable {
         this.zainteresowania = zainteresowania;
     }
 
-    
-    
     public Konto getKonto() {
         return konto;
     }
@@ -85,6 +83,7 @@ public class KlientController implements Serializable {
     public void setKonto(Konto konto) {
         this.konto = konto;
     }
+
     public Klient getUser() {
         return user;
     }
@@ -100,13 +99,17 @@ public class KlientController implements Serializable {
         return this.klientFacade.findAll();
     }
 
+    public void loadKlient() {
+        this.user = sessionCon.getKonto().getKlientCollection().iterator().next();
+    }
+
     public String add() {
 
 //        if (this.klientFacade.findByUzytkownikLoginOrEmail(user) == null) {
-            this.kontoFacade.create(this.konto);
-            this.user.setKlientKontoIdFk(this.konto);
-            this.klientFacade.create(this.user);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Dodano użytkownika!"));
+        this.kontoFacade.create(this.konto);
+        this.user.setKlientKontoIdFk(this.konto);
+        this.klientFacade.create(this.user);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Dodano użytkownika!"));
 //        } else {
 //            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Taki użytkownik już istnieje!"));
 //        }
@@ -117,7 +120,21 @@ public class KlientController implements Serializable {
         this.user = u;
         return "usersEdit";
     }
-    
+
+    public String editDetails() {
+        if(this.user.getKlientAdresIdFk() != null){
+            this.adres = this.user.getKlientAdresIdFk();
+        } else{
+            this.adres = new Adres();
+        }
+        if(this.user.getKlientDaneKlientaIdFk() != null){
+            this.daneKlienta = this.user.getKlientDaneKlientaIdFk();
+        } else{
+            this.daneKlienta = new DaneKlienta();
+        }
+        return "detailsEdit";
+    }
+
     public String detail(Klient u) {
         this.user = u;
         this.konto = user.getKlientKontoIdFk();
@@ -129,14 +146,41 @@ public class KlientController implements Serializable {
 
     public String edit() {
 //        if (this.uzytkownikFacade.findByUzytkownikLoginOrEmail(user) == null) {
-            this.kontoFacade.edit(this.konto);
-            this.user.setKlientKontoIdFk(this.konto);
-            this.klientFacade.edit(this.user);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Edytowano użytkownika!"));
+        this.kontoFacade.edit(this.konto);
+        this.user.setKlientKontoIdFk(this.konto);
+        this.klientFacade.edit(this.user);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Edytowano użytkownika!"));
 //        } else {
 //            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Taki użytkownik już istnieje!"));
 //        }
         return "usersEdit";
+    }
+
+    public String saveUserChange() {
+        System.out.println("-------------------------------> usergetKlientImie " + user.getKlientImie());
+        System.out.println("-------------------------------> usergetKlientAdresIdFk " + user.getKlientAdresIdFk());
+        System.out.println("-------------------------------> user getKlientDaneKlientaIdFk " + user.getKlientDaneKlientaIdFk());
+        
+        
+        if (this.adres.getAdresId() != null) {
+            adresFacade.edit(adres);
+        } else {
+            adresFacade.create(adres);
+        }
+
+        
+        if (this.daneKlienta.getDaneKlientaId() != null) {
+            daneKlientaFacade.edit(daneKlienta);
+        } else {
+            daneKlientaFacade.create(daneKlienta);
+        }
+
+        this.user.setKlientAdresIdFk(adres);
+        this.user.setKlientDaneKlientaIdFk(daneKlienta);
+        this.klientFacade.edit(this.user);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Edytowano użytkownika!"));
+
+        return "details";
     }
 
     public String remove(Klient user) {
@@ -144,7 +188,7 @@ public class KlientController implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usunięto użytkownika!"));
         return "users";
     }
-    
+
     public String ban(Klient user) {
         user.getKlientKontoIdFk().setKontoUprawnienia("ban");
         konto = user.getKlientKontoIdFk();
@@ -158,7 +202,7 @@ public class KlientController implements Serializable {
     public Object findById(Object key) {
         return this.klientFacade.find(key);
     }
-    
+
     public String addNewUser() {
         this.user = new Klient();
         this.konto = new Konto();
