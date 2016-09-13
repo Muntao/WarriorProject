@@ -6,78 +6,47 @@
 package controllers;
 
 import entities.DaneKlienta;
+import entities.Klient;
 import entities.Zainteresowania;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
 import models.DaneKlientaFacade;
-import models.ZainteresowaniaFacade;
+import models.KlientFacade;
 
-/**
- *
- * @author JacekM
- */
 @Named(value = "zainteresowaniaController")
 @SessionScoped
-public class ZainteresowaniaController implements Serializable, AbstractController<Zainteresowania>{
+public class ZainteresowaniaController implements Serializable {
+
+    private EntityManager em;
 
     @EJB
-    private ZainteresowaniaFacade zainteresowaniaFacade;
+    private KlientFacade klientFacade;
+    
+    @EJB
+    private DaneKlientaFacade daneKlientaFacade;
 
-    private Zainteresowania zainteresowania = new Zainteresowania();
+    private Klient klient = new Klient();
+
+    private Collection<Klient> znajomi = new ArrayList<>();
 
     public ZainteresowaniaController() {
     }
 
-    public Zainteresowania getZainteresowania() {
-        return zainteresowania;
+    public void ZnajdzOsobySpelniajaceZainteresowania() {
+        klient = (Klient) SessionManager.getObjectFromSession("klient");
+        Zainteresowania zainteresowania = klient.getKlientZainteresowaniaIdFk();
+
+        List<DaneKlienta> dk = daneKlientaFacade.getDaneKlientByZainteresowania(zainteresowania);
+        
+        for(DaneKlienta dka : dk){            
+            znajomi.add(klientFacade.getKlientByDaneKlientaId(dka));
+        }       
     }
 
-    public void setZainteresowania(Zainteresowania zainteresowania) {
-        this.zainteresowania = zainteresowania;
-    }
-
-    @Override
-    public List<Zainteresowania> findAll() {
-        return this.zainteresowaniaFacade.findAll();
-    }
-
-    @Override
-    public Zainteresowania findById(Zainteresowania t) throws Exception {
-        return this.zainteresowaniaFacade.find(t);
-    }
-
-    @Override
-    public String add() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String edit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String edit(Zainteresowania t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String detail(Zainteresowania t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String remove(Zainteresowania t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String addNew() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

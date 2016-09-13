@@ -29,6 +29,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "dane_klienta")
 @XmlRootElement
 @NamedQueries({
+    
+    
+    @NamedQuery(name = "DaneKlienta.findByZainteresowania", query = "SELECT d FROM DaneKlienta d WHERE d.daneKlientaWzrost > :zainteresowania_wzrost_min AND d.daneKlientaWzrost < :zainteresowania_wzrost_max AND d.daneKlientaWaga > :zainteresowania_waga_min AND d.daneKlientaWaga < :zainteresowania_waga_max AND d.daneKlientaPlec = :zainteresowania_plec AND d.daneKlientaStan = :zainteresowania_stan"),
+    
+    
     @NamedQuery(name = "DaneKlienta.findAll", query = "SELECT d FROM DaneKlienta d"),
     @NamedQuery(name = "DaneKlienta.findByDaneKlientaId", query = "SELECT d FROM DaneKlienta d WHERE d.daneKlientaId = :daneKlientaId"),
     @NamedQuery(name = "DaneKlienta.findByDaneKlientaWzrost", query = "SELECT d FROM DaneKlienta d WHERE d.daneKlientaWzrost = :daneKlientaWzrost"),

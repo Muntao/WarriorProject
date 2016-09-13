@@ -1,5 +1,6 @@
 package models;
 
+import entities.DaneKlienta;
 import entities.Klient;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -33,6 +34,15 @@ public class KlientFacade extends AbstractFacade<Klient> {
 
     public Klient getKlientById(Integer klientId) {
         Query q = em.createNamedQuery("Klient.findByKlientId").setParameter("klientId", klientId);
+        List<Klient> resultList = q.getResultList();
+        if (resultList.size() > 0) {
+            return resultList.get(0);
+        }
+        return null;
+    }
+    
+    public Klient getKlientByDaneKlientaId(DaneKlienta daneKlienta) {
+        Query q = em.createNamedQuery("Klient.findByKlientId").setParameter("daneKlientaIdFk", daneKlienta);
         List<Klient> resultList = q.getResultList();
         if (resultList.size() > 0) {
             return resultList.get(0);
