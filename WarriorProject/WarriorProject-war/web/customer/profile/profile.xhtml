@@ -20,9 +20,9 @@
                     <f:metadata>
                         <f:viewParam name="profileId" value="#{profileController.profileId}" />
                     </f:metadata>
-                    
+
                     #{profileController.loadProfile()}
-                    
+
                     <div class="data-view">
                         <div class="row">
                             <div class="col-md-3">
@@ -49,23 +49,31 @@
                                         <h:outputLabel  value="Ulica: " />
                                         <h:outputText value="#{profileController.klient.klientAdresIdFk.adresKodPocztowy}"/>
                                     </li>
+                                    <c:if test="#{profileController.isMyFriend() != 'a'}">
+                                        <h:outputLabel  value="Telefon: " />
+                                        <h:outputText value="#{profileController.klient.klientAdresIdFk.adresTelefon}"/>
+                                    </c:if>
                                 </ul>
                             </div>
 
-                            <div class="col-md-6">
-                                <ul>
-                                    <ui:repeat class="my-slider" value="#{profileController.imagesPath}" var="item">
-                                        <li><h:graphicImage style="width:100%" value="#{item}"/></li>
-                                    </ui:repeat>
-                                </ul>
-                            </div>
-
-                            <h:form>
-                                <div class="col-xs-4">
-                                    <h:commandLink class="button pull-right" value="Nowy użytkownik" action="#{profileController.test}"/>
+                            <c:if test="#{profileController.hasImages() == true}">
+                                <div class="col-md-6">
+                                    <div class="my-slider">
+                                        <ul>
+                                            <c:forEach items="${profileController.imagesPath}" var="item">
+                                                <li><h:graphicImage style="width:100%" value="#{item}"/></li>
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
                                 </div>
+                            </c:if>
+                            <h:form>
+                                <c:if test="#{profileController.isMyFriend() == 'a'}">
+                                    <div class="col-xs-4">
+                                        <h:commandLink class="button pull-right" value="Dodaj do znajomych" action="#{profileController.addToFriend()}"/>
+                                    </div>
+                                </c:if>
                             </h:form>
-
                         </div>  
                     </div>
                 </div>

@@ -71,29 +71,55 @@ public class ProfileController {
 
             return imagePaths;
         } else {
-            return null;
+            return new ArrayList<String>();
         }
     }
 
-    public String addToFriend() {
-        
-        System.out.println("ASDFRUN");
+    public void addToFriend() {
+        System.out.println("################# JACKE NUUUB!!!!!!!!!!!!!!!!!!!");
+        if (profileId == null) {
+            System.out.println("################# addToFriendNULL!!!!!!!!!!!!!!!!!!!");
+            return;
+        }
         Klient klient1 = klientFacade.getKlientById(Integer.valueOf(profileId));
         Klient klient2 = klientFacade.getKlientById(((Klient) SessionManager.getObjectFromSession("klient")).getKlientId());
 
+        System.out.println("DODAJE ZNAJOMYCH: " + klient1.getKlientId() + " and " + klient2.getKlientId());
         Znajomi znajomi = new Znajomi();
 
         znajomi.setZnajomiKlient2IdFk(klient1);
         znajomi.setZnajomiKlientIdFk(klient2);
 
         znajomiFacade.create(znajomi);
-
-        return "/WarriorProject-war/faces/index.xhtml";
     }
 
-    public String test() {
-        System.out.println("controllers.ProfileController.test()------------------------------------------------------------------");
-        return "profile";
+    public boolean hasImages() {
+
+        if (profileId == null) {
+            return false;
+        }
+        List<KlientZdjecie> images = klientZdjecieFacade.getKlientById(Integer.valueOf(profileId));
+        if (images == null || images.size() <= 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public String isMyFriend() {
+        if (profileId == null) {
+            return "a";
+        } else {
+            int friendId = Integer.valueOf(profileId);
+            int myId = ((Klient) SessionManager.getObjectFromSession("klient")).getKlientId();
+
+            List<Znajomi> friendList = znajomiFacade.getMyFriend(myId);
+            for (Znajomi z : friendList) {
+                if (z.getZnajomiKlientIdFk().getKlientId() == friendId || z.getZnajomiKlient2IdFk().getKlientId() == friendId) {
+                    return "b";
+                }
+            }
+            return "a";
+        }
     }
 
 }
