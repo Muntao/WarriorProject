@@ -60,6 +60,6 @@ public class ZainteresowaniaController implements Serializable {
     }
     
     public void showProfile(int id){
-        SessionManager.redirect2("/customer/profile/profile.xhtml?profileId=" + id);
+        SessionManager.redirect2("/customer/profile/profile.xhtml??faces-redirect=true&profileId=" + id);
     }
 }
