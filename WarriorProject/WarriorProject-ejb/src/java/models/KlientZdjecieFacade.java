@@ -6,9 +6,11 @@
 package models;
 
 import entities.KlientZdjecie;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +30,11 @@ public class KlientZdjecieFacade extends AbstractFacade<KlientZdjecie> {
     public KlientZdjecieFacade() {
         super(KlientZdjecie.class);
     }
-    
+
+    public List<KlientZdjecie> getKlientById(Integer klientId) {
+        Query q = em.createNamedQuery("KlientZdjecie.findByKlientId").setParameter("klientId", klientId);
+        List<KlientZdjecie> resultList = q.getResultList();
+        return resultList;
+    }
+
 }

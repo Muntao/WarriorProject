@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputScript library="js" name="jquery.js"></h:outputScript>
+        <h:outputScript library="js" name="unslider.js"></h:outputScript>
+        <h:outputScript library="js" name="slider.js"></h:outputScript>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/customerTemplate.xhtml">
+            <ui:define name="contentCustomer">
+                <div class="profile">
+                    <h1>Profil</h1>
+
+                    <f:metadata>
+                        <f:viewParam name="profileId" value="#{profileController.profileId}" />
+                    </f:metadata>
+
+                    #{profileController.loadProfile()}
+
+                    <div class="data-view">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h4>Profil użytkownika <br/>#{profileController.klient.klientImie}  #{profileController.klient.klientNazwisko}</h4>
+                                <br/>
+                                <ul>
+                                    <li>
+                                        <h:outputLabel  value="Imie: " />
+                                        <h:outputText value="#{profileController.klient.klientImie}"/>
+                                    </li>
+                                    <li>
+                                        <h:outputLabel  value="Nazwisko: " />
+                                        <h:outputText value="#{profileController.klient.klientNazwisko}"/>
+                                    </li>
+                                    <li>
+                                        <h:outputLabel  value="Miasto: " />
+                                        <h:outputText value="#{profileController.klient.klientAdresIdFk.adresMiejscowosc}"/>
+                                    </li>
+                                    <li>
+                                        <h:outputLabel  value="Ulica: " />
+                                        <h:outputText value="#{profileController.klient.klientAdresIdFk.adresUlica}"/>
+                                    </li>
+                                    <li>
+                                        <h:outputLabel  value="Ulica: " />
+                                        <h:outputText value="#{profileController.klient.klientAdresIdFk.adresKodPocztowy}"/>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="my-slider">
+                                    <ul>
+                                        <ui:repeat value="#{myBean.list}" var="item">
+                                            <li><h:graphicImage style="width:100%" value="item"/></li>
+                                        </ui:repeat>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>  
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

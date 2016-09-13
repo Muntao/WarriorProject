@@ -6,26 +6,21 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author JacekM
+ * @author layfl
  */
 @Entity
 @Table(name = "zainteresowania")
@@ -33,8 +28,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Zainteresowania.findAll", query = "SELECT z FROM Zainteresowania z"),
     @NamedQuery(name = "Zainteresowania.findByZainteresowaniaId", query = "SELECT z FROM Zainteresowania z WHERE z.zainteresowaniaId = :zainteresowaniaId"),
-    @NamedQuery(name = "Zainteresowania.findByZainteresowaniaNazwa", query = "SELECT z FROM Zainteresowania z WHERE z.zainteresowaniaNazwa = :zainteresowaniaNazwa"),
-    @NamedQuery(name = "Zainteresowania.findByZainteresowaniaZainteresowaniaOpisIdFk", query = "SELECT z FROM Zainteresowania z WHERE z.zainteresowaniaZainteresowaniaOpisIdFk = :zainteresowaniaZainteresowaniaOpisIdFk")})
+    @NamedQuery(name = "Zainteresowania.findByZainteresowaniaWzrostMin", query = "SELECT z FROM Zainteresowania z WHERE z.zainteresowaniaWzrostMin = :zainteresowaniaWzrostMin"),
+    @NamedQuery(name = "Zainteresowania.findByZainteresowaniaWzrostMax", query = "SELECT z FROM Zainteresowania z WHERE z.zainteresowaniaWzrostMax = :zainteresowaniaWzrostMax"),
+    @NamedQuery(name = "Zainteresowania.findByZainteresowaniaWagaMin", query = "SELECT z FROM Zainteresowania z WHERE z.zainteresowaniaWagaMin = :zainteresowaniaWagaMin"),
+    @NamedQuery(name = "Zainteresowania.findByZainteresowaniaWagaMax", query = "SELECT z FROM Zainteresowania z WHERE z.zainteresowaniaWagaMax = :zainteresowaniaWagaMax"),
+    @NamedQuery(name = "Zainteresowania.findByZainteresowaniaPlec", query = "SELECT z FROM Zainteresowania z WHERE z.zainteresowaniaPlec = :zainteresowaniaPlec"),
+    @NamedQuery(name = "Zainteresowania.findByZainteresowaniaStan", query = "SELECT z FROM Zainteresowania z WHERE z.zainteresowaniaStan = :zainteresowaniaStan"),
+    @NamedQuery(name = "Zainteresowania.findByZainteresowaniaWiekMin", query = "SELECT z FROM Zainteresowania z WHERE z.zainteresowaniaWiekMin = :zainteresowaniaWiekMin"),
+    @NamedQuery(name = "Zainteresowania.findByZainteresowaniaWiekMax", query = "SELECT z FROM Zainteresowania z WHERE z.zainteresowaniaWiekMax = :zainteresowaniaWiekMax")})
 public class Zainteresowania implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,16 +44,24 @@ public class Zainteresowania implements Serializable {
     @Basic(optional = false)
     @Column(name = "zainteresowania_id")
     private Integer zainteresowaniaId;
-    @Size(max = 100)
-    @Column(name = "zainteresowania_nazwa")
-    private String zainteresowaniaNazwa;
-    @Column(name = "zainteresowania_zainteresowania_opis_id_fk")
-    private Integer zainteresowaniaZainteresowaniaOpisIdFk;
-    @JoinColumn(name = "zainteresowania_id", referencedColumnName = "zainteresowania_opis_id", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private ZainteresowaniaOpis zainteresowaniaOpis;
-    @OneToMany(mappedBy = "klientZainteresowaniaIdFk")
-    private Collection<Klient> klientCollection;
+    @Column(name = "zainteresowania_wzrost_min")
+    private Integer zainteresowaniaWzrostMin;
+    @Column(name = "zainteresowania_wzrost_max")
+    private Integer zainteresowaniaWzrostMax;
+    @Column(name = "zainteresowania_waga_min")
+    private Integer zainteresowaniaWagaMin;
+    @Column(name = "zainteresowania_waga_max")
+    private Integer zainteresowaniaWagaMax;
+    @Size(max = 50)
+    @Column(name = "zainteresowania_plec")
+    private String zainteresowaniaPlec;
+    @Size(max = 50)
+    @Column(name = "zainteresowania_stan")
+    private String zainteresowaniaStan;
+    @Column(name = "zainteresowania_wiek_min")
+    private Integer zainteresowaniaWiekMin;
+    @Column(name = "zainteresowania_wiek_max")
+    private Integer zainteresowaniaWiekMax;
 
     public Zainteresowania() {
     }
@@ -69,37 +78,68 @@ public class Zainteresowania implements Serializable {
         this.zainteresowaniaId = zainteresowaniaId;
     }
 
-    public String getZainteresowaniaNazwa() {
-        return zainteresowaniaNazwa;
+    public Integer getZainteresowaniaWzrostMin() {
+        return zainteresowaniaWzrostMin;
     }
 
-    public void setZainteresowaniaNazwa(String zainteresowaniaNazwa) {
-        this.zainteresowaniaNazwa = zainteresowaniaNazwa;
+    public void setZainteresowaniaWzrostMin(Integer zainteresowaniaWzrostMin) {
+        this.zainteresowaniaWzrostMin = zainteresowaniaWzrostMin;
     }
 
-    public Integer getZainteresowaniaZainteresowaniaOpisIdFk() {
-        return zainteresowaniaZainteresowaniaOpisIdFk;
+    public Integer getZainteresowaniaWzrostMax() {
+        return zainteresowaniaWzrostMax;
     }
 
-    public void setZainteresowaniaZainteresowaniaOpisIdFk(Integer zainteresowaniaZainteresowaniaOpisIdFk) {
-        this.zainteresowaniaZainteresowaniaOpisIdFk = zainteresowaniaZainteresowaniaOpisIdFk;
+    public void setZainteresowaniaWzrostMax(Integer zainteresowaniaWzrostMax) {
+        this.zainteresowaniaWzrostMax = zainteresowaniaWzrostMax;
     }
 
-    public ZainteresowaniaOpis getZainteresowaniaOpis() {
-        return zainteresowaniaOpis;
+    public Integer getZainteresowaniaWagaMin() {
+        return zainteresowaniaWagaMin;
     }
 
-    public void setZainteresowaniaOpis(ZainteresowaniaOpis zainteresowaniaOpis) {
-        this.zainteresowaniaOpis = zainteresowaniaOpis;
+    public void setZainteresowaniaWagaMin(Integer zainteresowaniaWagaMin) {
+        this.zainteresowaniaWagaMin = zainteresowaniaWagaMin;
     }
 
-    @XmlTransient
-    public Collection<Klient> getKlientCollection() {
-        return klientCollection;
+    public Integer getZainteresowaniaWagaMax() {
+        return zainteresowaniaWagaMax;
     }
 
-    public void setKlientCollection(Collection<Klient> klientCollection) {
-        this.klientCollection = klientCollection;
+    public void setZainteresowaniaWagaMax(Integer zainteresowaniaWagaMax) {
+        this.zainteresowaniaWagaMax = zainteresowaniaWagaMax;
+    }
+
+    public String getZainteresowaniaPlec() {
+        return zainteresowaniaPlec;
+    }
+
+    public void setZainteresowaniaPlec(String zainteresowaniaPlec) {
+        this.zainteresowaniaPlec = zainteresowaniaPlec;
+    }
+
+    public String getZainteresowaniaStan() {
+        return zainteresowaniaStan;
+    }
+
+    public void setZainteresowaniaStan(String zainteresowaniaStan) {
+        this.zainteresowaniaStan = zainteresowaniaStan;
+    }
+
+    public Integer getZainteresowaniaWiekMin() {
+        return zainteresowaniaWiekMin;
+    }
+
+    public void setZainteresowaniaWiekMin(Integer zainteresowaniaWiekMin) {
+        this.zainteresowaniaWiekMin = zainteresowaniaWiekMin;
+    }
+
+    public Integer getZainteresowaniaWiekMax() {
+        return zainteresowaniaWiekMax;
+    }
+
+    public void setZainteresowaniaWiekMax(Integer zainteresowaniaWiekMax) {
+        this.zainteresowaniaWiekMax = zainteresowaniaWiekMax;
     }
 
     @Override
