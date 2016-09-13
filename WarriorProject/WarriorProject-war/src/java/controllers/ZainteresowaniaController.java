@@ -11,6 +11,7 @@ import entities.Zainteresowania;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -48,28 +49,32 @@ public class ZainteresowaniaController implements Serializable {
 
         if (klient.getKlientZainteresowaniaIdFk() != null) {
             Zainteresowania zainteresowania = klient.getKlientZainteresowaniaIdFk();
-//            List<DaneKlienta> dk = daneKlientaFacade.getDaneKlientByZainteresowania(zainteresowania);
-//            for (DaneKlienta dka : dk) {
-//                this.znajomi.add(klientFacade.getKlientByDaneKlientaId(dka));
-//            }
-            this.znajomi = this.klientFacade.findAll();
-            filtrujjj(zainteresowania);
+            List<DaneKlienta> dk = daneKlientaFacade.getDaneKlientByZainteresowania(zainteresowania);
+            for (DaneKlienta dka : dk) {
+                this.znajomi.add(klientFacade.getKlientByDaneKlientaId(dka));
+            }
+//            this.znajomi = this.klientFacade.findAll();
+//            filtrujjj(zainteresowania);
 
         } else {
             this.znajomi = this.klientFacade.findAll();
         }
     }
 
-    private void filtrujjj(Zainteresowania zainteresowania) {
-        Zainteresowania filtr = zainteresowania;
+    private void filtrujjj(Zainteresowania filtr) {
         if(checkEndFiltr()){
             return;
         }
-        
-        for (Klient kllientTmp : znajomi) {
-            
+        //ludzie bez uzplenionych danych
+        Iterator<Klient> it = znajomi.iterator();
+        Klient klientTmp = null;
+        while(it.hasNext()) {
+            klientTmp = it.next();
+            if(klientTmp.getKlientDaneKlientaIdFk() == null){
+                znajomi.remove(klientTmp);
+            }
         }
-        
+
     }
 
     private boolean checkEndFiltr() {
