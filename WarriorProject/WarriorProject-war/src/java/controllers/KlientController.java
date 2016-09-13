@@ -100,7 +100,7 @@ public class KlientController implements Serializable {
     }
 
     public void loadKlient() {
-        this.user = sessionCon.getKonto().getKlientCollection().iterator().next();
+        this.user = (Klient)SessionManager.getObjectFromSession("klient");   
     }
 
     public String add() {

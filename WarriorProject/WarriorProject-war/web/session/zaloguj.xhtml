@@ -15,13 +15,13 @@
                         <h:form>
                             <h1>Logowanie</h1>
                                 <h:outputLabel style="margin-right: 20px" value="Login: " for="kontoLogin" />
-                                <h:inputText class="form-control" id="kontoLogin" value="#{sessionController.konto.kontoLogin}" title="KontoLogin" required="true" requiredMessage="LOGIN jest wymagany."/>
+                                <h:inputText class="form-control" id="kontoLogin" value="#{loginController.konto.kontoLogin}" title="KontoLogin" required="true" requiredMessage="LOGIN jest wymagany."/>
                                 <br />
                                 <h:outputLabel style="margin-right: 20px" value="Hasło: " for="uzytkownikHaslo" />
-                                <h:inputSecret class="form-control" id="kontoHaslo" value="#{sessionController.konto.kontoHaslo}" title="KontoHaslo" required="true" requiredMessage="HASŁO jest wymagane."/>
+                                <h:inputSecret class="form-control" id="kontoHaslo" value="#{loginController.konto.kontoHaslo}" title="KontoHaslo" required="true" requiredMessage="HASŁO jest wymagane."/>
                                 
                             <br /><br />
-                            <h:commandButton class="btn btn-primary" value="Zaloguj się" action="#{sessionController.login()}"></h:commandButton>
+                            <h:commandButton class="btn btn-primary" value="Zaloguj się" action="#{loginController.login()}"></h:commandButton>
                         </h:form>
                     </f:view>
                 </div>  
