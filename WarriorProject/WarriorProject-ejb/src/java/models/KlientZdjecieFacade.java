@@ -33,6 +33,7 @@ public class KlientZdjecieFacade extends AbstractFacade<KlientZdjecie> {
 
     public List<KlientZdjecie> getKlientById(Integer klientId) {
         Query q = em.createNamedQuery("KlientZdjecie.findByKlientId").setParameter("klientId", klientId);
+        System.out.println("\n\n" + q + "\n\n");
         List<KlientZdjecie> resultList = q.getResultList();
         return resultList;
     }

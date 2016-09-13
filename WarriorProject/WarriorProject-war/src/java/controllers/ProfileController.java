@@ -7,6 +7,7 @@ package controllers;
 
 import entities.Klient;
 import entities.KlientZdjecie;
+import entities.Znajomi;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -15,13 +16,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import models.KlientFacade;
 import models.KlientZdjecieFacade;
-import models.KontoFacade;
-import models.ZdjecieFacade;
+import models.ZnajomiFacade;
 
-/**
- *
- * @author layfl
- */
 @Named(value = "profileController")
 @ManagedBean
 public class ProfileController {
@@ -32,13 +28,11 @@ public class ProfileController {
     private Klient klient;
 
     @EJB
-    private KontoFacade kontoFacade;
-    @EJB
     private KlientFacade klientFacade;
     @EJB
     private KlientZdjecieFacade klientZdjecieFacade;
     @EJB
-    private ZdjecieFacade zdjecieFacade;
+    private ZnajomiFacade znajomiFacade;
 
     public ProfileController() {
     }
@@ -64,14 +58,31 @@ public class ProfileController {
     }
 
     public List<String> getImagesPath() {
+        System.out.println("\n\n ###################################PROFILEID: " + profileId + "\n\n ");
         ArrayList<String> imagePaths = new ArrayList<>();
-        List<KlientZdjecie> klientZdjecieList = klientZdjecieFacade.getKlientById(klient.getKlientId());
+        List<KlientZdjecie> klientZdjecieList = klientZdjecieFacade.getKlientById(Integer.valueOf(profileId));
 
         for (KlientZdjecie klientZdjecie : klientZdjecieList) {
             imagePaths.add(klientZdjecie.getKlientZdjecieZdjecieIdFk().getZdjecieSciezka());
         }
 
+        System.out.println("========###### " + imagePaths.size());
+
         return imagePaths;
+    }
+
+    public String addToFriend() {
+        Klient klient1 = klientFacade.getKlientById(Integer.valueOf(profileId));
+        Klient klient2 = klientFacade.getKlientById(((Klient) SessionManager.getObjectFromSession("klient")).getKlientId());
+
+        Znajomi znajomi = new Znajomi();
+
+        znajomi.setZnajomiKlient2IdFk(klient1);
+        znajomi.setZnajomiKlientIdFk(klient2);
+
+        znajomiFacade.create(znajomi);
+
+        return "/WarriorProject-war/faces/index.xhtml";
     }
 
 }

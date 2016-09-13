@@ -52,19 +52,17 @@
                                 </ul>
                             </div>
 
-
                             <div class="col-md-6">
-                                <div class="my-slider">
-                                    <ul>
-                                        <ui:repeat value="#{myBean.list}" var="item">
-                                            <li><h:graphicImage style="width:100%" value="item"/></li>
-                                        </ui:repeat>
-                                    </ul>
-                                </div>
+                                <ul>
+                                    <ui:repeat class="my-slider" value="#{profileController.imagesPath}" var="item">
+                                        <li><h:graphicImage style="width:100%" value="#{item}"/></li>
+                                    </ui:repeat>
+                                </ul>
                             </div>
 
-
-
+                            <h:form>
+                                <h:commandButton class="btn btn-primary" value="Dodaj do znajomych" action="#{profileController.addToFriend()}"></h:commandButton>
+                            </h:form>
 
                         </div>  
                     </div>
