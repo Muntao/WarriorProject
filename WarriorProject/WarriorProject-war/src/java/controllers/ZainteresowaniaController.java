@@ -51,35 +51,15 @@ public class ZainteresowaniaController implements Serializable {
             Zainteresowania zainteresowania = klient.getKlientZainteresowaniaIdFk();
             List<DaneKlienta> dk = daneKlientaFacade.getDaneKlientByZainteresowania(zainteresowania);
             for (DaneKlienta dka : dk) {
-                this.znajomi.add(klientFacade.getKlientByDaneKlientaId(dka));
+                if(dka != null)
+                    this.znajomi.add(klientFacade.getKlientByDaneKlientaId(dka));
             }
-//            this.znajomi = this.klientFacade.findAll();
-//            filtrujjj(zainteresowania);
-
         } else {
             this.znajomi = this.klientFacade.findAll();
         }
     }
-
-    private void filtrujjj(Zainteresowania filtr) {
-        if(checkEndFiltr()){
-            return;
-        }
-        //ludzie bez uzplenionych danych
-        Iterator<Klient> it = znajomi.iterator();
-        Klient klientTmp = null;
-        while(it.hasNext()) {
-            klientTmp = it.next();
-            if(klientTmp.getKlientDaneKlientaIdFk() == null){
-                znajomi.remove(klientTmp);
-            }
-        }
-
+    
+    public void showProfile(int id){
+        SessionManager.redirect2("/customer/profile/profile.xhtml?profileId=" + id);
     }
-
-    private boolean checkEndFiltr() {
-        final int MIN_COUNT = 3;
-        return znajomi.size() <= MIN_COUNT;
-    }
-
 }

@@ -42,7 +42,7 @@ public class KlientFacade extends AbstractFacade<Klient> {
     }
     
     public Klient getKlientByDaneKlientaId(DaneKlienta daneKlienta) {
-        Query q = em.createNamedQuery("Klient.findByKlientId").setParameter("daneKlientaIdFk", daneKlienta);
+        Query q = em.createNamedQuery("Klient.findByDaneKlientaId").setParameter("daneKlientaIdFk", daneKlienta);
         List<Klient> resultList = q.getResultList();
         if (resultList.size() > 0) {
             return resultList.get(0);

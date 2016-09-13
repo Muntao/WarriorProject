@@ -68,13 +68,17 @@ public class SessionManager {
 
     public static void destroySession() {
         initSession();
-        if(context == null) return;
+        if (context == null) {
+            return;
+        }
         context.invalidateSession();
     }
 
     public static void redirect(String url) {
         initSession();
-        if(context == null) return;
+        if (context == null) {
+            return;
+        }
         try {
             context.redirect(url);
         } catch (IOException ex) {
@@ -82,4 +86,9 @@ public class SessionManager {
         }
     }
 
+    public static void redirect2(String url) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        NavigationHandler myNav = facesContext.getApplication().getNavigationHandler();
+        myNav.handleNavigation(facesContext, null, url);
+    }
 }
