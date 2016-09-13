@@ -18,31 +18,31 @@
                         <h:form id="panelAdd">
                             <h:panelGrid columns="2">
                                 <h:outputLabel value="Wzrost min:"/>
-                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWzrostMin}"/>  
+                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWzrostMin}" required="true"/>  
 
                                 <h:outputLabel value="Wzrost max:"/>
-                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWzrostMax}"/> 
+                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWzrostMax}" required="true"/> 
 
                                 <h:outputLabel value="Waga min:"/>
-                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWagaMin}"/>  
+                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWagaMin}" required="true"/>  
 
                                 <h:outputLabel value="Waga max:"/>
-                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWagaMax}"/> 
+                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWagaMax}" required="true"/> 
 
                                 <h:outputLabel value="Wiek min:"/>
-                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWagaMin}"/>  
+                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWagaMin}" required="true"/>  
 
                                 <h:outputLabel value="Wiek max:"/>
-                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWiekMax}"/> 
+                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWiekMax}" required="true"/> 
 
                                 <h:outputLabel value="Płeć:"  />
-                                <h:selectOneMenu class="form-control" value="#{klientController.zainteresowania.zainteresowaniaPlec}">
+                                <h:selectOneMenu class="form-control" value="#{klientController.zainteresowania.zainteresowaniaPlec}" required="true">
                                     <f:selectItem itemValue="M" itemLabel="M" />
                                     <f:selectItem itemValue="K" itemLabel="K" />
                                 </h:selectOneMenu>
 
                                 <h:outputLabel value="Stan:"  />
-                                <h:selectOneMenu class="form-control" value="#{klientController.zainteresowania.zainteresowaniaStan}" >
+                                <h:selectOneMenu class="form-control" value="#{klientController.zainteresowania.zainteresowaniaStan}"  required="true">
                                     <f:selectItem itemValue="Wolny" itemLabel="Wolny" />
                                     <f:selectItem itemValue="W Zwiazku  " itemLabel="W Zwiazku" />
                                     <f:selectItem itemValue="Rozwiedziony" itemLabel="Rozwiedziony" />

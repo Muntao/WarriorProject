@@ -15,7 +15,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
 import models.DaneKlientaFacade;
 import models.KlientFacade;
 
@@ -23,11 +22,9 @@ import models.KlientFacade;
 @SessionScoped
 public class ZainteresowaniaController implements Serializable {
 
-    private EntityManager em;
-
     @EJB
     private KlientFacade klientFacade;
-    
+
     @EJB
     private DaneKlientaFacade daneKlientaFacade;
 
@@ -38,15 +35,46 @@ public class ZainteresowaniaController implements Serializable {
     public ZainteresowaniaController() {
     }
 
-    public void ZnajdzOsobySpelniajaceZainteresowania() {
-        klient = (Klient) SessionManager.getObjectFromSession("klient");
-        Zainteresowania zainteresowania = klient.getKlientZainteresowaniaIdFk();
+    public Collection<Klient> getZnajomi() {
+        return znajomi;
+    }
 
-        List<DaneKlienta> dk = daneKlientaFacade.getDaneKlientByZainteresowania(zainteresowania);
+    public void setZnajomi(Collection<Klient> znajomi) {
+        this.znajomi = znajomi;
+    }
+
+    public void znajdzOsobySpelniajaceZainteresowania() {
+        klient = (Klient) SessionManager.getObjectFromSession("klient");
+
+        if (klient.getKlientZainteresowaniaIdFk() != null) {
+            Zainteresowania zainteresowania = klient.getKlientZainteresowaniaIdFk();
+//            List<DaneKlienta> dk = daneKlientaFacade.getDaneKlientByZainteresowania(zainteresowania);
+//            for (DaneKlienta dka : dk) {
+//                this.znajomi.add(klientFacade.getKlientByDaneKlientaId(dka));
+//            }
+            this.znajomi = this.klientFacade.findAll();
+            filtrujjj(zainteresowania);
+
+        } else {
+            this.znajomi = this.klientFacade.findAll();
+        }
+    }
+
+    private void filtrujjj(Zainteresowania zainteresowania) {
+        Zainteresowania filtr = zainteresowania;
+        if(checkEndFiltr()){
+            return;
+        }
         
-        for(DaneKlienta dka : dk){            
-            znajomi.add(klientFacade.getKlientByDaneKlientaId(dka));
-        }       
+        for (Klient kllientTmp : znajomi) {
+            
+        }
+        
+    }
+
+    private boolean checkEndFiltr() {
+        final int MIN_COUNT = 3;
+        return znajomi.size() <= MIN_COUNT;
     }
 
 }
