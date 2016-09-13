@@ -66,7 +66,7 @@ public class LoginController implements Serializable {
                 konto = kontoEJB.findByKontoLoginAndHaslo(konto);
                 if (konto != null) {
                     if (checkLogged() == false) {
-//                        this.konto = kontoEJB.refresh(this.konto);
+                        this.konto = kontoEJB.refresh(this.konto);
                         SessionManager.addToSession("id_konta", konto.getKontoId());
                         SessionManager.addToSession("logged", true);
                         SessionManager.addToSession("permission", konto.getKontoUprawnienia());
@@ -102,7 +102,7 @@ public class LoginController implements Serializable {
         if (this.konto.getKlientCollection() == null) {
             return null;
         }
-//        this.konto = kontoEJB.refresh(this.konto);
+        this.konto = kontoEJB.refresh(this.konto);
         for (Klient klient : this.konto.getKlientCollection()) {
             if (klient != null) {
                 Logger.getLogger("INFO").log(Level.INFO, "CLIENT FROM ACCOUNT: {0}", klient.getKlientImie());
@@ -116,7 +116,7 @@ public class LoginController implements Serializable {
         if (this.konto.getPracownikCollection() == null) {
             return null;
         }
-//        this.konto = kontoEJB.refresh(this.konto);
+        this.konto = kontoEJB.refresh(this.konto);
         for (Pracownik pracownik : this.konto.getPracownikCollection()) {
             if (pracownik != null) {
                 return pracownik;
