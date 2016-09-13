@@ -89,7 +89,7 @@ public class UploadBean {
 
             zdjecie.setZdjecieOcenaIlosc(0);
             zdjecie.setZdjecieOcenaSuma(0);
-            zdjecie.setZdjecieSciezka(getUriPath() + "/resources/pictures/" + base64EncodeString(kontoName) + "/" + fileName);
+            zdjecie.setZdjecieSciezka("/resources/pictures/" + base64EncodeString(kontoName) + "/" + fileName);
             zdjecieFacade.create(zdjecie);
 
             klientZdjecie.setKlientZdjecieKlientIdFk(klient);

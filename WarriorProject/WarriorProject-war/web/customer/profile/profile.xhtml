@@ -20,9 +20,9 @@
                     <f:metadata>
                         <f:viewParam name="profileId" value="#{profileController.profileId}" />
                     </f:metadata>
-
+                    
                     #{profileController.loadProfile()}
-
+                    
                     <div class="data-view">
                         <div class="row">
                             <div class="col-md-3">
@@ -52,19 +52,19 @@
                                 </ul>
                             </div>
 
-
                             <div class="col-md-6">
-                                <div class="my-slider">
-                                    <ul>
-                                        <ui:repeat value="#{myBean.list}" var="item">
-                                            <li><h:graphicImage style="width:100%" value="item"/></li>
-                                        </ui:repeat>
-                                    </ul>
-                                </div>
+                                <ul>
+                                    <ui:repeat class="my-slider" value="#{profileController.imagesPath}" var="item">
+                                        <li><h:graphicImage style="width:100%" value="#{item}"/></li>
+                                    </ui:repeat>
+                                </ul>
                             </div>
 
-
-
+                            <h:form>
+                                <div class="col-xs-4">
+                                    <h:commandLink class="button pull-right" value="Nowy użytkownik" action="#{profileController.test}"/>
+                                </div>
+                            </h:form>
 
                         </div>  
                     </div>
