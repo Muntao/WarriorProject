@@ -23,7 +23,6 @@ import javax.inject.Named;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
 import models.KlientFacade;
@@ -41,9 +40,6 @@ public class UploadBean {
 
     private Zdjecie zdjecie = new Zdjecie();
     private Part file;
-
-    @Inject
-    private SessionController sessionController;
 
     @EJB
     private KlientZdjecieFacade klientZdjecieFacade;
@@ -72,7 +68,7 @@ public class UploadBean {
     }
 
     public String uploadImage() {
-        String kontoName = sessionController.getKonto().getKontoLogin();
+        String kontoName = ((Klient) SessionManager.getObjectFromSession("klient")).getKlientKontoIdFk().getKontoLogin();
         String profileFolderURL = getServerPath() + "/resources/pictures/" + base64EncodeString(kontoName);
 
         if (isDir(profileFolderURL) == false) {
@@ -86,12 +82,14 @@ public class UploadBean {
         String fileName = filePath.substring(filePath.lastIndexOf("\\") + 1, filePath.length());
         File outputFile = new File(profileFolderURL + "/" + fileName);
         try {
+
+            System.out.println("=== " + getUriPath());
             Klient klient = getKlient();
             KlientZdjecie klientZdjecie = new KlientZdjecie();
 
             zdjecie.setZdjecieOcenaIlosc(0);
             zdjecie.setZdjecieOcenaSuma(0);
-            zdjecie.setZdjecieSciezka(profileFolderURL + "/" + fileName);
+            zdjecie.setZdjecieSciezka(getUriPath() + "/resources/pictures/" + base64EncodeString(kontoName) + "/" + fileName);
             zdjecieFacade.create(zdjecie);
 
             klientZdjecie.setKlientZdjecieKlientIdFk(klient);
@@ -108,9 +106,9 @@ public class UploadBean {
     }
 
     private Klient getKlient() throws SQLException {
-        Klient klient = klientFacade.getKlientByKontoId(sessionController.getKonto().getKontoId());
+        Klient klient = klientFacade.getKlientByKontoId(((Klient) SessionManager.getObjectFromSession("klient")).getKlientKontoIdFk().getKontoId());
         if (klient == null) {
-            throw new SQLException("Nie znaleziono klienta z konto_id = " + sessionController.getKonto().getKontoId());
+            throw new SQLException("Nie znaleziono klienta z konto_id = " + ((Klient) SessionManager.getObjectFromSession("klient")).getKlientKontoIdFk().getKontoId());
         }
         return klient;
     }
@@ -132,6 +130,13 @@ public class UploadBean {
                 .getExternalContext().getContext();
 
         return servletContext.getRealPath("");
+    }
+
+    private String getUriPath() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        ServletContext servletContext = (ServletContext) context
+                .getExternalContext().getContext();
+        return servletContext.getContextPath();
     }
 
     public static String getFileNameFromPart(Part part) {

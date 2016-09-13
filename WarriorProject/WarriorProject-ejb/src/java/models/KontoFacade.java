@@ -47,4 +47,11 @@ public class KontoFacade extends AbstractFacade<Konto> {
         } 
         return null;        
     }
+    
+    public Konto refresh(Konto konto) {
+        konto = em.find(Konto.class, konto.getKontoId());
+        em.refresh(konto);
+        em.flush();
+        return konto;
+    }
 }
