@@ -76,6 +76,8 @@ public class ProfileController {
     }
 
     public String addToFriend() {
+        
+        System.out.println("ASDFRUN");
         Klient klient1 = klientFacade.getKlientById(Integer.valueOf(profileId));
         Klient klient2 = klientFacade.getKlientById(((Klient) SessionManager.getObjectFromSession("klient")).getKlientId());
 
