@@ -59,16 +59,20 @@ public class ProfileController {
 
     public List<String> getImagesPath() {
         System.out.println("\n\n ###################################PROFILEID: " + profileId + "\n\n ");
-        ArrayList<String> imagePaths = new ArrayList<>();
-        List<KlientZdjecie> klientZdjecieList = klientZdjecieFacade.getKlientById(Integer.valueOf(profileId));
+        if (profileId != null) {
+            ArrayList<String> imagePaths = new ArrayList<>();
+            List<KlientZdjecie> klientZdjecieList = klientZdjecieFacade.getKlientById(Integer.valueOf(profileId));
 
-        for (KlientZdjecie klientZdjecie : klientZdjecieList) {
-            imagePaths.add(klientZdjecie.getKlientZdjecieZdjecieIdFk().getZdjecieSciezka());
+            for (KlientZdjecie klientZdjecie : klientZdjecieList) {
+                imagePaths.add(klientZdjecie.getKlientZdjecieZdjecieIdFk().getZdjecieSciezka());
+            }
+
+            System.out.println("========###### " + imagePaths.size());
+
+            return imagePaths;
+        } else {
+            return null;
         }
-
-        System.out.println("========###### " + imagePaths.size());
-
-        return imagePaths;
     }
 
     public String addToFriend() {
@@ -83,6 +87,11 @@ public class ProfileController {
         znajomiFacade.create(znajomi);
 
         return "/WarriorProject-war/faces/index.xhtml";
+    }
+
+    public String test() {
+        System.out.println("controllers.ProfileController.test()------------------------------------------------------------------");
+        return "profile";
     }
 
 }
