@@ -497,6 +497,16 @@ table.dataTable {
     padding-bottom: 2%;
 }
 
+.contentFinder {
+    width: 100%;
+}
+
+.contentFinder h1 {
+    text-align: center;
+    font-family: sansation-light;
+    padding-bottom: 2%;
+}
+
 .box-client-wrapper {
     padding: 25px;
     float : left;

@@ -8,15 +8,13 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <ui:composition template="/templates/customerTemplate.xhtml">
-            <ui:define name="contentCustomer">
+        <ui:composition template="/templates/finderTemplate.xhtml">
+            <ui:define name="contentFinder">
                 <h1>Ludzie</h1>
+                #{zainteresowaniaController.znajdzOsobySpelniajaceZainteresowania()}
                     <f:view>
                         <h:form>
-                            <div class="col-xs-4">
-                                <h:commandLink class="button pull-right" value="Nowy użytkownik" action="#{klientController.addNewUser()}"/>
-                            </div>
-                            <h:dataTable  value="#{klientController.findAllUsers()}" class="admin-table" var="item">
+                            <h:dataTable  value="#{zainteresowaniaController.znajomi}" class="admin-table" var="item">
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="Id"/>
@@ -37,27 +35,15 @@
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Telefon"/>
+                                        <h:outputText value="Miejscowość"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.klientAdresIdFk.adresTelefon}"/>
+                                    <h:outputText value="#{item.klientDaneKlientaIdFk.daneKlientaDataUr}"/>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="Miejscowość"/>
                                     </f:facet>
                                     <h:outputText value="#{item.klientAdresIdFk.adresMiejscowosc}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Login"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.klientKontoIdFk.kontoLogin}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Uprawnienia"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.klientKontoIdFk.kontoUprawnienia}"/>
                                 </h:column>
                                 <h:column> 
                                     <f:facet name="header">
