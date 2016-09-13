@@ -11,13 +11,12 @@
         <ui:composition template="/templates/adminTemplate.xhtml">
             <ui:define name="contentAdmin">
                 <h1>Uzytkownicy</h1>
-                <div class="">
                     <f:view>
                         <h:form>
                             <div class="col-xs-4">
                                 <h:commandLink class="button pull-right" value="Nowy użytkownik" action="#{klientController.addNewUser()}"/>
                             </div>
-                            <h:dataTable value="#{klientController.findAllUsers()}" class="admin-table" var="item">
+                            <h:dataTable  value="#{klientController.findAllUsers()}" class="admin-table" var="item">
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="Id"/>
@@ -73,8 +72,6 @@
                             </h:dataTable>
                         </h:form>
                     </f:view>
-
-                </div>
             </ui:define>
         </ui:composition>
     </h:body>

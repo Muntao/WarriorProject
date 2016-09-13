@@ -11,29 +11,49 @@
             <ui:define name="contentAdmin">
                 <h1>Profil</h1>
                 <div class="adminView">
+                    #{loginController.loadPracownikAccount()}
 
                     <div class="box-client-wrapper">
 
                         <div class="profile-image">
                             <i class="fa fa-user fa-5x" aria-hidden="true"></i>
-<!--                            <p><h:outputLabel value="#{loginController.konto.kontoUprawnienia}"/></p>-->
+                            <p><h:outputLabel value="#{loginController.konto.kontoUprawnienia}"/></p>
                         </div>
 
                         <div class="profile-details">
                             <h:panelGrid columns="2">
                                 <h:outputLabel value="Imię:"/>
-<!--                                <h:outputLabel value="#{loginController.pracownikAccount.pracownikImie}"/>-->
+                                <h:outputLabel value="#{loginController.pracownik.pracownikImie}"/>
                                 <h:outputLabel value="Nazwisko:"/>
-                                <!--<h:outputLabel value="#{loginController.pracownikAccount.pracownikNazwisko}"/>-->
+                                <h:outputLabel value="#{loginController.pracownik.pracownikNazwisko}"/>
                             </h:panelGrid>  
                         </div>
                     </div>
 
                     <div class="box-adres-wrapper">
                         <div class="adres-details">
-                            <h2> Kontakt </h2>
+                            <h3> Kontakt </h3>
                             <h:panelGrid columns="2">
+                                <h:outputLabel value="Ulica:"/>
+                                <h:outputLabel value="#{loginController.pracownik.pracownikAdresIdFk.adresUlica}"/>
                                 <h:outputLabel value="Miejscowość:"/>
+                                <h:outputLabel value="#{loginController.pracownik.pracownikAdresIdFk.adresMiejscowosc}"/>
+                                <h:outputLabel value="Kod pocztowy:"/>
+                                <h:outputLabel value="#{loginController.pracownik.pracownikAdresIdFk.adresKodPocztowy}"/>
+                                <h:outputLabel value="Poczta:"/>
+                                <h:outputLabel value="#{loginController.pracownik.pracownikAdresIdFk.adresPoczta}"/> 
+                            </h:panelGrid>
+                        </div>
+                    </div>
+                    
+                    <div class="box-adres-wrapper">
+                        <div class="adres-details">
+                            <h3> Dane </h3>
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Data zatrudnienia:"/>
+                                <h:outputLabel value="#{loginController.pracownik.pracownikDataZatrudnienia}"/>
+                                <h:outputLabel value="Wynagrodzenie:"/>
+                                <h:outputLabel value="#{loginController.pracownik.pracownikWynagrodzenie}"/>
                             </h:panelGrid>
                         </div>
                     </div>

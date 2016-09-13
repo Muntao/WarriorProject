@@ -27,9 +27,6 @@ public class ZainteresowaniaController implements Serializable, AbstractControll
     @EJB
     private ZainteresowaniaFacade zainteresowaniaFacade;
 
-    @Inject
-    private SessionController sessionCon;
-
     private Zainteresowania zainteresowania = new Zainteresowania();
 
     public ZainteresowaniaController() {

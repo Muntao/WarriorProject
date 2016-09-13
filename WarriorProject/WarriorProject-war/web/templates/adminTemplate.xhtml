@@ -12,19 +12,17 @@
         <h:outputScript library="js" name="jquery.js"></h:outputScript>
         <h:outputScript library="js" name="jquery-ui/jquery-ui.js"></h:outputScript>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"/>
-        <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
         <h:outputStylesheet name="/bs/css/bootstrap.css" library="css" />
 
-<!--        <h:panelGroup rendered="#{loginController.checkLogged() == true}">
-            <c:if test="#{loginController.checkPermission() != 'Super'}">
-                #{pageController.redirect('/index.xhtml')}
+        <h:panelGroup rendered="#{loginController.checkLogged() == true}">
+            <c:if test="#{loginController.checkPermission() != 'ADMIN'}">
+                #{loginController.redirect('/WarriorProject-war/faces/index.xhtml')}
             </c:if>
         </h:panelGroup>
 
         <h:panelGroup rendered="#{loginController.checkLogged() == false}">
-            #{pageController.redirect('/index.xhtml')}
-        </h:panelGroup>-->
+            #{loginController.redirect('/WarriorProject-war/faces/index.xhtml')}
+        </h:panelGroup>
 
 
     </h:head>
