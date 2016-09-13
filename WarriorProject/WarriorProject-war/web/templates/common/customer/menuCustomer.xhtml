@@ -7,11 +7,11 @@
         <ui:composition>
             <ul>
                 <li><h2>Panel Klienta</h2></li>
-                <li><h:link value="Mój profil" outcome="/customer/customerIndex.xhtml"/></li>
+                <li><h:link value="Mój profil" outcome="#{menuLinkController.myProfileLink}"/></li>
                 <li><h:link value="Dane personalne" outcome="/customer/details/details.xhtml"/></li>
                 <li><h:link value="Zainteresowania" outcome="/customer/interests/interests.xhtml"/></li>
                 <li><h:link value="Znajomi" outcome="/customer/friends/friends.xhtml"/></li>
-                <li><h:link value="Zdjecia" outcome="/customer/photos/photos.xhtml"/></li>
+                <li><h:link value="Zdjecia" outcome="#{menuLinkController.myPictureLink}"/></li>
             </ul>
         </ui:composition>
     </body>
