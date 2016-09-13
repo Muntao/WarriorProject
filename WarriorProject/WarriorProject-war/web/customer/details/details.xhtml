@@ -14,10 +14,6 @@
                 <div class="clients">
                     <h1> Moje dane</h1>
                     #{klientController.loadKlient()}
-                    <h:form>
-                        <h:commandLink class="button pull-right" value="Edytuj" action="#{klientController.editDetails()}"/>
-                    </h:form>
-
                     <br/>
                     <div class="data-view">
                         <div class="row">
@@ -92,6 +88,9 @@
 
                         </div>
                     </div>  
+                    <h:form>
+                        <h:commandLink class="btn btn-primary" value="Edytuj" action="#{klientController.editDetails()}"/>
+                    </h:form>
                 </div>
             </ui:define>
         </ui:composition>

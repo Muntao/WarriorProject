@@ -27,9 +27,6 @@ public class AdresController implements AbstractController<Adres>, Serializable{
     @EJB
     private AdresFacade adresFacade;
 
-    @Inject
-    private SessionController sessionCon;
-
     private Adres adres = new Adres();
 
     public Adres getAdres() {

@@ -238,6 +238,35 @@
 }*/
 /* END OF OFFER */
 
+
+#panelAdd table, #panelAdd{
+    padding-top: 2%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+#panelAdd table tr.spaceUnder > td
+{
+    padding-bottom: 5em;
+}
+#panelAdd table td{
+    text-align: left;
+}
+
+#panelAdd2 table, #panelAdd{
+    padding-top: 2%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+#panelAdd2 table tr.spaceUnder > td
+{
+    padding-bottom: 5em;
+}
+#panelAdd2 table td{
+    text-align: left;
+}
+
 /*************admin***************/
 
 .menuAdmin{

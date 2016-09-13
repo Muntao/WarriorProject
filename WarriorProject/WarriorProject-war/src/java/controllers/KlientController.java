@@ -11,6 +11,7 @@ import entities.Adres;
 import entities.DaneKlienta;
 import entities.Zainteresowania;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -43,14 +44,25 @@ public class KlientController implements Serializable {
     @EJB
     private ZainteresowaniaFacade zainteresowaniaFacade;
 
-    @Inject
-    private SessionController sessionCon;
-
     private Klient user = new Klient();
     private Konto konto = new Konto();
     private Adres adres = new Adres();
     private DaneKlienta daneKlienta = new DaneKlienta();
     private Zainteresowania zainteresowania = new Zainteresowania();
+    
+    HashMap<String, String> inter = new HashMap<>();
+
+    public HashMap<String, String> getInter() {
+        return inter;
+    }
+
+    public void setInter(HashMap<String, String> inter) {
+        this.inter = inter;
+    }
+    
+    public void addInter(String key, String val) {
+        this.inter.put(key, val);
+    }
 
     public Adres getAdres() {
         return adres;
@@ -157,18 +169,12 @@ public class KlientController implements Serializable {
     }
 
     public String saveUserChange() {
-        System.out.println("-------------------------------> usergetKlientImie " + user.getKlientImie());
-        System.out.println("-------------------------------> usergetKlientAdresIdFk " + user.getKlientAdresIdFk());
-        System.out.println("-------------------------------> user getKlientDaneKlientaIdFk " + user.getKlientDaneKlientaIdFk());
-        
-        
         if (this.adres.getAdresId() != null) {
             adresFacade.edit(adres);
         } else {
             adresFacade.create(adres);
         }
 
-        
         if (this.daneKlienta.getDaneKlientaId() != null) {
             daneKlientaFacade.edit(daneKlienta);
         } else {
@@ -181,6 +187,33 @@ public class KlientController implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Edytowano użytkownika!"));
 
         return "details";
+    }
+    
+     public String editZainteresowania() {
+        
+        return "interestsEdit";
+    }
+    
+    public void loadZainteresowania(){
+        this.user = (Klient)SessionManager.getObjectFromSession("klient");
+        if(user.getKlientZainteresowaniaIdFk() != null){
+            zainteresowania = user.getKlientZainteresowaniaIdFk();
+        } else{
+            zainteresowania = new Zainteresowania();
+        }
+    }
+    
+    public String saveZainteresowania(){
+        if(zainteresowania.getZainteresowaniaId() != null){
+            zainteresowaniaFacade.edit(zainteresowania);
+        } else {
+            zainteresowaniaFacade.create(zainteresowania);
+        }
+        
+        user.setKlientZainteresowaniaIdFk(zainteresowania);
+        klientFacade.edit(user);
+    
+        return "interests";
     }
 
     public String remove(Klient user) {

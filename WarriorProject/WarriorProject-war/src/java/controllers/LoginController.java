@@ -34,6 +34,16 @@ public class LoginController implements Serializable {
 
     @EJB
     private KontoFacade kontoEJB;
+    
+     private Pracownik pracownik;
+
+    public Pracownik getPracownik() {
+        return pracownik;
+    }
+
+    public void setPracownik(Pracownik pracownik) {
+        this.pracownik = pracownik;
+    }
 
     public Konto getKonto() {
         return konto;
@@ -54,11 +64,6 @@ public class LoginController implements Serializable {
         }
         return "";
     }
-
-//    public Konto findKontoByLoginAndPassword() throws Exception {
-//        Konto kontoToReturn = kontoEJB.checkoutLogin(this.konto.getKontoLogin(), this.konto.getKontoHaslo());
-//        return kontoToReturn;
-//    }
 
     public String login() {
         try {
@@ -95,7 +100,7 @@ public class LoginController implements Serializable {
         if (SessionManager.getObjectFromSession("logged") != null) {
             SessionManager.destroySession();
         }
-        return "/index?faces-redirect=true";
+        return "";
     }
 
     public Klient getKlientAccount() {
@@ -110,6 +115,12 @@ public class LoginController implements Serializable {
             }
         }
         return null;
+    }
+    
+    public void loadPracownikAccount() {
+        
+        this.konto = kontoEJB.find(SessionManager.getObjectFromSession("id_konta"));
+        this.pracownik = konto.getPracownikCollection().iterator().next();
     }
 
     public Pracownik getPracownikAccount() {
@@ -138,5 +149,9 @@ public class LoginController implements Serializable {
     public String addNew() {
         kontoEJB.create(this.konto);
         return "/index?faces-redirect=true";
+    }
+    
+    public void redirect(String url){
+        SessionManager.redirect(url);
     }
 }

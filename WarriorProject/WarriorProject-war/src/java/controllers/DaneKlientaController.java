@@ -25,9 +25,6 @@ public class DaneKlientaController implements Serializable, AbstractController<D
      @EJB
     private DaneKlientaFacade daneKlientaFacade;
 
-    @Inject
-    private SessionController sessionCon;
-
     private DaneKlienta daneKlienta = new DaneKlienta();
 
     public DaneKlientaController() {

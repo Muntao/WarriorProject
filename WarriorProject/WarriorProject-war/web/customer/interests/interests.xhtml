@@ -1,12 +1,58 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <ui:composition template="/templates/customerTemplate.xhtml">
+            <ui:define name="contentCustomer">
+                <h1>Zainteresowania</h1>
+                <div class="">     
+                    #{klientController.loadZainteresowania()}
+                    <f:view>
+                        <h:form id="panelAdd">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Wzrost min:"/>
+                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWzrostMin}" readonly="true"/>  
+
+                                <h:outputLabel value="Wzrost max:"/>
+                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWzrostMax}" readonly="true"/> 
+
+                                <h:outputLabel value="Waga min:"/>
+                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWagaMin}" readonly="true"/>  
+
+                                <h:outputLabel value="Waga max:"/>
+                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWagaMax}" readonly="true"/> 
+
+                                <h:outputLabel value="Wiek min:"/>
+                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWagaMin}" readonly="true"/>  
+
+                                <h:outputLabel value="Wiek max:"/>
+                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaWiekMax}" readonly="true"/> 
+
+                                <h:outputLabel value="Płeć:"  />
+                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaPlec}" readonly="true"/> 
+
+                                <h:outputLabel value="Stan:"  />
+                                <h:inputText class="form-control" value="#{klientController.zainteresowania.zainteresowaniaStan}" readonly="true"/> 
+
+                            </h:panelGrid> 
+                        </h:form>
+                    </f:view>
+                    <br/>
+                    <h:form id="panelAdd2">
+                        <h:panelGrid columns="2">
+                            <h:commandLink class="btn btn-primary" value="Edytuj" action="#{klientController.editZainteresowania()}"/>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

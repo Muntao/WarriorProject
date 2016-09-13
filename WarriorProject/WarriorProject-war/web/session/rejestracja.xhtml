@@ -9,41 +9,44 @@
     </h:head>
 
     <h:body>
-<ui:composition template="/templates/pageTemplate.xhtml">
+        <ui:composition template="/templates/pageTemplate.xhtml">
             <ui:define name="content">
-                <h2 class="table-title"><h:outputText value="Panel Rejestracji"/><i></i></h2> 
-               <f:view>
-                    <h:form>                        
-                        <h:panelGrid columns="2">
-                            <h:outputLabel value="Imie:" for="klientImie" />
+                <div class="login">
+                    <f:view>
+                        <h:form> 
+                            <h1>Rejestracja</h1>
+                            
+                            <h:outputLabel style="margin-right: 20px" value="Imie:" for="klientImie" />
                             <h:inputText class="form-control" id="klientImie" value="#{rejestracjaBean.klient.klientImie}" title="klientImie" required="true" requiredMessage="Pole IMIE jest wymagane." validatorMessage="String is not valid (only characters a-z A-Z)">
                                 <f:validator validatorId="OnlyLettersValidator" />
                                 <f:validateLength minimum="3" maximum="50" />
                             </h:inputText>
-                            <h:outputLabel value="Nazwisko:" for="klientNazwisko" />
+                            <h:outputLabel style="margin-right: 20px" value="Nazwisko:" for="klientNazwisko" />
                             <h:inputText class="form-control" id="klientNazwisko" value="#{rejestracjaBean.klient.klientNazwisko}" title="klientNazwisko" required="true" requiredMessage="Pole NAZWISKO jest wymagane.">
                                 <f:validator validatorId="OnlyLettersValidator" />
                                 <f:validateLength minimum="3" maximum="50" />
                             </h:inputText>
-                            <h:outputLabel value="Login:" for="kontoLogin" />
+                            <h:outputLabel style="margin-right: 20px" value="Login:" for="kontoLogin" />
                             <h:inputText class="form-control"  id="kontoLogin" value="#{rejestracjaBean.konto.kontoLogin}" title="kontoLogin" required="true" requiredMessage="Pole LOGIN jest wymagane.">
                                 <f:validateLength minimum="3" maximum="50" />
                                 <f:validator validatorId="OnlyLettersAndNumbersValidator" />
                             </h:inputText> 
-                            <h:outputLabel value="Hasło:" for="kontoHaslo" />
+                            <h:outputLabel style="margin-right: 20px" value="Hasło:" for="kontoHaslo" />
                             <h:inputSecret class="form-control" id="kontoHaslo" value="#{rejestracjaBean.konto.kontoHaslo}" title="kontoHaslo" required="true" requiredMessage="Pole HASLO jest wymagane.">
                                 <f:validateLength minimum="3" maximum="50" />
                                 <f:validator validatorId="OnlyLettersAndNumbersValidator" />
                             </h:inputSecret>  
-                            <h:outputLabel value="Powtórz hasło:" for="kontoHaslo2" />
+                            <h:outputLabel style="margin-right: 20px" value="Powtórz hasło:" for="kontoHaslo2" />
                             <h:inputSecret class="form-control" id="kontoHaslo2" value="#{rejestracjaBean.haslo}" title="kontoHaslo2" required="true" requiredMessage="Pole POWTORZ HASLO jest wymagane.">
                                 <f:validateLength minimum="3" maximum="50" />
                                 <f:validator validatorId="OnlyLettersAndNumbersValidator" />
                             </h:inputSecret>
-                        </h:panelGrid> 
-                        <h:commandButton class="button pull-right" action="#{rejestracjaBean.register()}" value="Zarejestruj się!"/>
-                    </h:form>
-                </f:view>
+                            
+                            <br /><br />
+                            <h:commandButton class="btn btn-primary" action="#{rejestracjaBean.register()}" value="Zarejestruj się!"/>
+                        </h:form>
+                    </f:view>
+                </div>
             </ui:define> 
         </ui:composition>
     </h:body>

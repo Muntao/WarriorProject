@@ -28,9 +28,6 @@ public class KontoController implements Serializable {
     @EJB
     private KontoFacade kontoFacade;
 
-    @Inject
-    private SessionController sessionController;
-
     private Konto konto = new Konto();
 
     public Konto getKonto() {
